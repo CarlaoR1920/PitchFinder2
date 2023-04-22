@@ -12608,3 +12608,18 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
     width: 100%
 }
+
+
+
+#accordionSidebar {
+    color: #093b29;
+    background-color: #1C7A04;
+}
+
+#campos{
+    margin-left: 270px;
+}
+
+#lucro{
+    margin-left: 200px;
+}
