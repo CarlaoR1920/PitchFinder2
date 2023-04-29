@@ -71,7 +71,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="Dashboards.html">
+                <a class="nav-link" href="Profissionais.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Profissionais</span></a>
             </li>
@@ -101,7 +101,7 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        
+
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -144,12 +144,12 @@
                     <!-- Content Row -->
                     <div class="row">
 
-                        
+
 
                         <!-- Campos Afiliados Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4" id="Card3">
-                            <div class="card border-left-primary shadow h-100 py-2" >
-                                <div class="card-body" >
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
@@ -165,28 +165,84 @@
                         </div>
                     </div>
 
-                    <input type="text" id="input-fundo" placeholder="Insira o nome" onfocus="this.placeholder = 'Insira o nome'" oninput="if (this.value !== '') this.placeholder = ''">
-                    
+
+
                     <!-- Content Row -->
-                    <div class="row">
+                    <div class="row justify-content-start">
+                        <div class="col-md-auto" id="imagem">
+                            <input type="file" id="input-inserir-imagem" accept="image/*"
+                                onchange="previewImagem(event)">
+                            <div id="quadrado-inserir-imagem">
+                                <label id="labelImagem" for="input-inserir-imagem">Inserir imagem</label>
+                            </div>
+                            <input type="text" id="input-fundo" class="inputs" placeholder="Insira o nome"
+                                onfocus="this.placeholder = 'Insira o nome'"
+                                oninput="if (this.value !== '') this.placeholder = ''">
 
-                        <div id="quadrado-inserir-imagem">
-                            <label id="labelImagem" for="input-inserir-imagem">Inserir imagem</label>
                         </div>
-                        
-
-
+                        <div class="col-md-auto" id="labelsCampo">
+                            <div class="row justify-content-start" id="labelsCampoLinha1">
+                                <div class="col-md-auto">
+                                    <label class="labels" id="labelLocalizacao">Localização:</label>
+                                    <input type="text" id="input-localizacao" class="inputs">
+                                </div>
+                                <div class="col-md-auto">
+                                    <label class="labels" id="labelBalnearios">Balnearios:</label>
+                                    <input type="text" id="input-balnearios" class="inputs">
+                                </div>
+                                <div class="col-md-auto">
+                                    <label class="labels" id="labelRelvado">Relvado:</label>
+                                    <input type="text" id="input-relvado" class="inputs">
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-md-auto">
+                                    <label class="labels" id="labelOutros">Outros:</label>
+                                    <input type="text" id="input-fundo" class="inputs">
+                                </div>
+                                <div class="col-md-auto">
+                                    <label class="labels" id="labelPreco">Preço(/h):</label>
+                                    <input type="text" id="input-fundo" class="inputs">
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <input type="file" id="input-inserir-imagem" accept="image/*" onchange="previewImagem(event)">
+                    <div class="row justify-content-center">
+                        <table class="table table-borderless" id="tableMaterial" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Material</th>
+                                    <th>Quantidade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>Bolas</th>
+                                    <th><input type="text" id="input-localizacao" class="inputs"></th>
+                                </tr>
+                                <tr>
+                                    <th>Coletes</th>
+                                    <th><input type="text" id="input-localizacao" class="inputs"></th>
+                                </tr>
 
-                    
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+
+
             </div>
-            <!-- End of Main Content -->
+
+
+
 
         </div>
-        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Main Content -->
+
+    </div>
+    <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->

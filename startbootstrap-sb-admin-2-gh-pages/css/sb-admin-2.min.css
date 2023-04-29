@@ -12615,31 +12615,32 @@ body.sidebar-toggled footer.sticky-footer {
     background-color: #1C7A04;
 }
 
-#Card1{
+#Card1 {
     margin-left: 230px;
 }
 
-#Card2{
+#Card2 {
     margin-left: 200px;
 }
 
-#Card3{
+#Card3 {
     margin-left: auto;
     margin-right: auto;
 }
 
-tr , th{
+tr,
+th {
     text-align: center;
 }
 
-#butaoAceitar{
+#butaoAceitar {
     background-color: green;
     color: white;
     border-radius: 5px;
     width: 100px;
 }
 
-#butaoRecusar{
+#butaoRecusar {
     background-color: red;
     color: white;
     border-radius: 5px;
@@ -12665,36 +12666,88 @@ select {
     padding-bottom: 2px;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
+}
 
-  thead{
+thead {
     background-color: #E5E5E5;
     color: green;
-  }
+}
 
-  #CreateCampo, #RegistarCampo{
+#CreateCampo,
+#RegistarCampo,
+#GuardarDadosCampo {
     margin-top: 20px;
     background-color: #1C7A04;
     color: white;
-  }
+    font-size: 20px;
+}
 
-  #quadrado-inserir-imagem {
-    width: 300px;
+#quadrado-inserir-imagem {
+    width: 400px;
     height: 300px;
     background-color: #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    margin-left: 10px;
-  }
 
-  #input-inserir-imagem{
+}
+
+#input-inserir-imagem {
     margin-top: 5px;
-  }
+}
 
-#input-fundo{
+.inputs {
     border: none;
 }
 
+#LabelsCampo {
+    text-align: left;
+    color: #1C7A04;
+    font-size: 36px;
+}
 
+.labels {
+    font-size: 36px;
+    color: #1C7A04;
+}
+
+#labelsCampoLinha1 {
+    margin-top: 75px;
+    margin-bottom: 50px;
+}
+
+
+
+.inputs {
+    font-size: 26px;
+}
+
+#input-localizacao {
+    width: 250px;
+}
+
+#input-balnearios {
+    width: 55px;
+    margin-right: 50px;
+
+}
+
+#input-relvado {
+    width: 200px;
+}
+
+#tableMaterial {
+    width: auto;
+    font-size: 36px;
+    text-align: center;
+}
+
+#dataTable a {
+    color: black;
+    text-decoration: underline;
+}
+
+#dataTable {
+    font-size: 28px;
+}
