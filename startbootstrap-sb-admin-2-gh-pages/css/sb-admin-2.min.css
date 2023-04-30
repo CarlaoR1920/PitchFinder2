@@ -12637,14 +12637,14 @@ th {
     background-color: green;
     color: white;
     border-radius: 5px;
-    width: 100px;
+    width: 150px;
 }
 
 #butaoRecusar {
     background-color: red;
     color: white;
     border-radius: 5px;
-    width: 100px;
+    width: 150px;
 }
 
 select {
@@ -12675,11 +12675,26 @@ thead {
 
 #CreateCampo,
 #RegistarCampo,
-#GuardarDadosCampo {
+#GuardarDadosCampo,
+#RegistarPro {
     margin-top: 20px;
     background-color: #1C7A04;
     color: white;
     font-size: 20px;
+}
+
+#imagem_Pro{
+    margin-top: 50px;
+}
+
+#quadrado-inserir-imagem_Pro{
+    width: 400px;
+    height: 450px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 #quadrado-inserir-imagem {
@@ -12697,10 +12712,6 @@ thead {
     margin-top: 5px;
 }
 
-.inputs {
-    border: none;
-}
-
 #LabelsCampo {
     text-align: left;
     color: #1C7A04;
@@ -12712,6 +12723,12 @@ thead {
     color: #1C7A04;
 }
 
+.labels1 {
+    font-size: 36px;
+    color: #1C7A04;
+    margin-top: 20px;
+}
+
 #labelsCampoLinha1 {
     margin-top: 75px;
     margin-bottom: 50px;
@@ -12719,8 +12736,30 @@ thead {
 
 
 
+
 .inputs {
+    border: none;
     font-size: 26px;
+}
+
+.inputsPro{
+    border: none;
+    margin-top: 20px;
+    font-size: 36px;
+    height: 60px;
+    width: 1000px;
+}
+
+.inputsProL1{
+    border: none;
+    font-size: 36px;
+    height: 60px;
+    margin-top: 20px;
+    width: 1000px;
+}
+
+#input-Idade{
+    width: 75px;
 }
 
 #input-localizacao {
@@ -12750,4 +12789,39 @@ thead {
 
 #dataTable {
     font-size: 28px;
+}
+
+#linha1{
+    margin-top: 30px;
+}
+
+.reservas{
+    height: fit-content;
+    margin-top: 20px;
+    font-size: 36px;
+}
+
+#ReservalCol2{
+    margin-left: 100px;
+}
+
+
+#butaoAceitar2 {
+    margin-left: 20px;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+}
+
+#butaoRecusar2 {
+    margin-left: 20px;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
 }

@@ -57,7 +57,7 @@
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="Reservas.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Reservas</span></a>
@@ -70,7 +70,7 @@
                     <span>Campos</span></a>
             </li>
 
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="Profissionais.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Profissionais</span></a>
@@ -101,7 +101,7 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        
+
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -137,21 +137,23 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Profissionais</h1>
-                        <button type="button" class="btn" id="RegistarCampo" onclick="CriarProfissional()";>Criar Profissionais</button>
+                        <h1 class="h3 mb-0 text-gray-800">Reservas</h1>
+                        <button type="button" class="btn" id="GuardarDadosCampo">Guardar</button>
                     </div>
 
                     <!-- Content Row -->
                     <div class="row">
 
+
+
                         <!-- Campos Afiliados Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4" id="Card3">
-                            <div class="card border-left-primary shadow h-100 py-2" >
-                                <div class="card-body" >
+                        <div class="col-xl-3 col-md-6 mb-4" id="Card1">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Nº Profissionais</div>
+                                                Reservas</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
                                         </div>
                                         <div class="col-auto">
@@ -161,54 +163,111 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        <!-- Lucro Anual Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4" id="Card2">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Por Aprovar</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                                        </div>
+                                        <div class="col-auto">
+
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+
 
                     <!-- Content Row -->
+                    <div class="row justify-content-start">
+                        <div class="col-md-auto" id="imagem">
+                            <div id="quadrado-inserir-imagem">
+                                <label id="labelImagem" for="input-inserir-imagem">Inserir imagem</label>
+                            </div>
+                            <label class="labels1" id="labelNaturalidade">PlayGreen</label>
 
-                    <div class="row">
 
-                        <!-- DataTales Example -->
-
-
-
-
-                        <div class="table-responsive">
-                            <table class="table table-borderless" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>Nome</th>
-                                        <th>Contacto</th>
-                                        <th>Email</th>
-                                        <th>Salário</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><a href="ConsulatarProfissionais.html">Jóse Anastácio</a></td>
-                                        <td>919767123</td>
-                                        <td>JooooseeeeeeP@gmail.com</td>
-                                        <td>3€/h</td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
                         </div>
-
-
-
+                        <div class="col-md-auto">
+                            <div class="row justify-content-start">
+                                <label class="labels1" id="labelNaturalidade">Localização: Vila Verde</label>
+                            </div>
+                            <div class="row justify-content-start">
+                                <label class="labels1" id="labelNaturalidade">Balnearios: 2</label>
+                            </div>
+                            <div class="row justify-content-start">
+                                <label class="labels1" id="labelNaturalidade">Outros: WI-FI</label>
+                            </div>
+                            <div class="row justify-content-start">
+                                <label class="labels1" id="labelNaturalidade">Nivel de risco:</label>
+                                <select class="reservas">
+                                    <option value="joao_lomba">1</option>
+                                    <option value="david_esteves">2</option>
+                                    <option value="david_esteves">3</option>
+                                    <option value="david_esteves">4</option>
+                                    <option value="david_esteves">5</option>
+                                </select>
+                            </div>
+                            <div class="row justify-content-start">
+                                <label class="labels1" id="labelNaturalidade">Ativar Ambulancia:</label>
+                                <select class="reservas">
+                                    <option value="Sim">Sim</option>
+                                    <option value="Nao">Não</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-auto" id="ReservalCol2">
+                            <div class="row justify-content-start">
+                                <label class="labels1" id="labelNaturalidade">Data: 27-05-2023</label>
+                            </div>
+                            <div class="row justify-content-start">
+                                <label class="labels1" id="labelNaturalidade">Horario: 17:00 - 18:00</label>
+                            </div>
+                            <div class="row justify-content-start">
+                                <label class="labels1" id="labelNaturalidade">Custo:70€</label>
+                            </div>
+                            <div class="row justify-content-start">
+                                <label class="labels1" id="labelNaturalidade">Profissional:</label>
+                                <select class="reservas">
+                                    <option value="joao_lomba">João Lomba</option>
+                                    <option value="david_esteves">David Esteves</option>
+                                </select>
+                            </div>
+                            <div class="row justify-content-start">
+                                <label class="labels1" id="labelNaturalidade">Cliente: David Esteves</label>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="row">
-
-                        
+                    <div class="row justify-content-start" id="ConfReserva">
+                        <td>
+                            <button id="butaoAceitar2">Aceitar</button>
+                            <button id="butaoRecusar2">Recusar</button>
+                        </td>
 
                     </div>
                 </div>
+
+
             </div>
-            <!-- End of Main Content -->
+
+
+
 
         </div>
-        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Main Content -->
+
+    </div>
+    <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->

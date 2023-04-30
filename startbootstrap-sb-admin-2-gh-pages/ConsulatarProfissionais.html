@@ -101,7 +101,7 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        
+
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -138,16 +138,18 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Profissionais</h1>
-                        <button type="button" class="btn" id="RegistarCampo" onclick="CriarProfissional()";>Criar Profissionais</button>
+                        <button type="button" class="btn" id="RegistarPro" onclick="RegistarProfissional()">Registar</button>
                     </div>
 
                     <!-- Content Row -->
                     <div class="row">
 
+
+
                         <!-- Campos Afiliados Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4" id="Card3">
-                            <div class="card border-left-primary shadow h-100 py-2" >
-                                <div class="card-body" >
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
@@ -163,52 +165,59 @@
                         </div>
                     </div>
 
+
+
                     <!-- Content Row -->
+                    <div class="row justify-content-start">
+                        <div class="col-md-auto" id="imagem_Pro">
+                            <div id="quadrado-inserir-imagem_Pro">
+                                <label id="labelImagem" for="input-inserir-imagem">Inserir imagem</label>
+                            </div>
 
-                    <div class="row">
-
-                        <!-- DataTales Example -->
-
-
-
-
-                        <div class="table-responsive">
-                            <table class="table table-borderless" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>Nome</th>
-                                        <th>Contacto</th>
-                                        <th>Email</th>
-                                        <th>Salário</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><a href="ConsulatarProfissionais.html">Jóse Anastácio</a></td>
-                                        <td>919767123</td>
-                                        <td>JooooseeeeeeP@gmail.com</td>
-                                        <td>3€/h</td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
                         </div>
-
-
-
-                    </div>
-
-                    <div class="row">
-
-                        
-
+                        <div class="col-md-auto" id="labelsCampo">
+                            <div class="row justify-content-start" id="linha1">
+                                <label class="labels1" id="labelNome">Nome:</label>
+                                <input type="text" id="input-Nome" class="inputsProL1">
+                            </div>
+                            <div class="row justify-content-start">
+                                <label class="labels1" id="labelNaturalidade">Naturalidade:</label>
+                                <input type="text" id="input-Naturalidade" class="inputsPro">
+                            </div>
+                            <div class="row justify-content-start">
+                                <label class="labels1" id="labelIdade">Idade:</label>
+                                <input type="text" id="input-Idade" class="inputsPro">
+                                <label class="labels1" id="labelIdade">anos</label>
+                            </div>
+                            <div class="row justify-content-start" >
+                                <input type="text" id="input-Habilitação" class="inputsPro" placeholder="Inserir Habilitação"
+                                onfocus="this.placeholder = 'Insira o nome'"
+                                oninput="if (this.value !== '') this.placeholder = ''">
+                            </div>
+                            <div class="row justify-content-start" >
+                                <label class="labels1" id="labelEmail">Email:</label>
+                                <input type="text" id="input-Email" class="inputsPro">
+                            </div>
+                            <div class="row justify-content-start">
+                                <label class="labels1" id="labelContacto">Contacto:</label>
+                                <input type="text" id="input-Contacto" class="inputsPro">
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+
             </div>
-            <!-- End of Main Content -->
+
+
+
 
         </div>
-        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Main Content -->
+
+    </div>
+    <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
