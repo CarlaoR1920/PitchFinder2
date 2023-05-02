@@ -12747,7 +12747,15 @@ thead {
     margin-top: 20px;
     font-size: 36px;
     height: 60px;
-    width: 1000px;
+    width: 900px;
+}
+
+#input-Nascimento{
+    width: 300px;
+}
+
+#input-Contacto{
+    width: 350px;
 }
 
 .inputsProL1{
@@ -12764,6 +12772,9 @@ thead {
 
 #input-localizacao {
     width: 250px;
+}
+#input-Salario{
+    width: 200px;
 }
 
 #input-balnearios {
@@ -12824,4 +12835,15 @@ thead {
     width: 150px;
     height: 40px;
     font-size: 20px;
+}
+
+#simboloEuro{
+    font-size: 50px;
+    color: #000;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#labelSalario{
+    margin-left: 20px;
 }

@@ -138,7 +138,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Profissionais</h1>
-                        <button type="button" class="btn" id="RegistarPro" onclick="RegistarProfissional()">Registar</button>
+                        <button form="formulario" class="btn" id="RegistarPro" onclick="RegistarProfissional(event)">Registar</button>
                     </div>
 
                     <!-- Content Row -->
@@ -177,34 +177,42 @@
                             </div>
 
                         </div>
-                        <div class="col-md-auto" id="labelsCampo">
-                            <div class="row justify-content-start" id="linha1">
-                                <label class="labels1" id="labelNome">Nome:</label>
-                                <input type="text" id="input-Nome" class="inputsProL1">
+                        <form id="formulario">
+                            <div class="col-md-auto" id="dadosProfissionais">
+                                <div class="row justify-content-start" id="linha1">
+                                    <label class="labels1" id="labelNome">Nome:</label>
+                                    <input type="text" name="Nome" id="input-Nome" class="inputsProL1">
+                                </div>
+                                <div class="row justify-content-start">
+                                    <label class="labels1" id="labelNaturalidade">Naturalidade:</label>
+                                    <input type="text" name="Naturalidade" id="input-Naturalidade" class="inputsPro">
+                                </div>
+                                <div class="row justify-content-start">
+                                    <label class="labels1" id="labelDataNascimento">Data de Nascimento:</label>
+                                    <input type="date" name="Dob" id="input-Nascimento" class="inputsPro">
+
+                                    <label class="labels1" id="labelSalario">Salario:</label>
+                                    <input type="text" name="Salario" id="input-Salario" class="inputsPro">
+                                    <span id="simboloEuro">€</span>
+                                </div>
+                                
+                                <div class="row justify-content-start">
+                                    <input type="text" name="Habilitação" id="input-Habilitação" class="inputsPro"
+                                        placeholder="Inserir Habilitação"
+                                        onfocus="this.placeholder = 'Inserir Habilitação'"
+                                        oninput="if (this.value !== '') this.placeholder = ''">
+                                </div>
+                                <div class="row justify-content-start">
+                                    <label class="labels1" id="labelEmail">Email:</label>
+                                    <input type="email" name="Email" id="input-Email" class="inputsPro">
+                                </div>
+                                <div class="row justify-content-start">
+                                    <label class="labels1" id="labelContacto">Contacto:</label>
+                                    <input type="tel" name="Contacto" id="input-Contacto" class="inputsPro"
+                                        maxlength="11">
+                                </div>
                             </div>
-                            <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Naturalidade:</label>
-                                <input type="text" id="input-Naturalidade" class="inputsPro">
-                            </div>
-                            <div class="row justify-content-start">
-                                <label class="labels1" id="labelIdade">Idade:</label>
-                                <input type="text" id="input-Idade" class="inputsPro">
-                                <label class="labels1" id="labelIdade">anos</label>
-                            </div>
-                            <div class="row justify-content-start" >
-                                <input type="text" id="input-Habilitação" class="inputsPro" placeholder="Inserir Habilitação"
-                                onfocus="this.placeholder = 'Insira o nome'"
-                                oninput="if (this.value !== '') this.placeholder = ''">
-                            </div>
-                            <div class="row justify-content-start" >
-                                <label class="labels1" id="labelEmail">Email:</label>
-                                <input type="text" id="input-Email" class="inputsPro">
-                            </div>
-                            <div class="row justify-content-start">
-                                <label class="labels1" id="labelContacto">Contacto:</label>
-                                <input type="text" id="input-Contacto" class="inputsPro">
-                            </div>
-                        </div>
+
                     </div>
                 </div>
 
