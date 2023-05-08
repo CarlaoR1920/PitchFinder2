@@ -23,11 +23,12 @@
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
 
 
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="MostarImagem()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -191,7 +192,6 @@
                     <div class="row justify-content-start">
                         <div class="col-md-auto" id="imagem">
                             <div id="quadrado-inserir-imagem">
-                                <label id="labelImagem" for="input-inserir-imagem">Inserir imagem</label>
                             </div>
                             <label class="labels1" id="labelNaturalidade">PlayGreen</label>
 
@@ -208,21 +208,7 @@
                                 <label class="labels1" id="labelNaturalidade">Outros: WI-FI</label>
                             </div>
                             <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Nivel de risco:</label>
-                                <select class="reservas">
-                                    <option value="joao_lomba">1</option>
-                                    <option value="david_esteves">2</option>
-                                    <option value="david_esteves">3</option>
-                                    <option value="david_esteves">4</option>
-                                    <option value="david_esteves">5</option>
-                                </select>
-                            </div>
-                            <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Ativar Ambulancia:</label>
-                                <select class="reservas">
-                                    <option value="Sim">Sim</option>
-                                    <option value="Nao">Não</option>
-                                </select>
+                                <label class="labels1" id="labelNaturalidade">Cliente: David Esteves</label>
                             </div>
                         </div>
                         <div class="col-md-auto" id="ReservalCol2">
@@ -237,14 +223,11 @@
                             </div>
                             <div class="row justify-content-start">
                                 <label class="labels1" id="labelNaturalidade">Profissional:</label>
-                                <select class="reservas">
-                                    <option value="joao_lomba">João Lomba</option>
-                                    <option value="david_esteves">David Esteves</option>
+                                <select id="SelectPros" class="inputsPro" name="Profissional">
+                                    <option v-for="item in items" :value="item.Nome">{{item.Nome}}</option>
                                 </select>
                             </div>
-                            <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Cliente: David Esteves</label>
-                            </div>
+
                         </div>
                     </div>
                     <div class="row justify-content-start" id="ConfReserva">

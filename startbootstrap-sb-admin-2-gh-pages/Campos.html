@@ -23,6 +23,8 @@
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+
 
 
 </head>
@@ -152,7 +154,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Nº Campos</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                                            <div id="nCampos" class="h5 mb-0 font-weight-bold text-gray-800">{{nCampos}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -172,25 +174,24 @@
 
 
 
-                        <div class="table-responsive">
+                        <div class="table-responsive" id="tabelaCampos">
                             <table class="table table-borderless" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>Nome</th>
                                         <th>Localização</th>
-                                        <th>Email</th>
+                                        <th>Relvado</th>
                                         <th>Preço(/h)</th>
 
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><a href="ConsulatarCampo.html">PlayGreen</a></td>
-                                        <td>Vila Verde</td>
-                                        <td>PlayGreenCampo@relvados.com</td>
-                                        <td>20€</td>
+                                <tbody id="TabelaCampos">
+                                    <tr v-for="item in items" >
+                                        <td><a href="ConsulatarProfissionais.html">{{ item.Nome }}</a></td>
+                                        <td>{{ item.Localizacao }}</td>
+                                        <td>{{ item.Relvado }}</td>
+                                        <td>{{ item.Preco}}€</td>
                                     </tr>
-
                                 </tbody>
                             </table>
                         </div>
