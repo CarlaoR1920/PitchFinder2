@@ -23,7 +23,8 @@
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    </div>
 
 </head>
 
@@ -138,7 +139,8 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Campos</h1>
-                        <button  form="formularioCampo" class="btn" id="RegistarCampo" onclick="RegistarCampos(event)">Registar</button>
+                        <button form="formularioCampo" class="btn" id="RegistarCampo"
+                            onclick="RegistarCampos(event)">Registar</button>
                     </div>
 
                     <!-- Content Row -->
@@ -154,7 +156,8 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Nº Campos</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                                            <div id="nCampos" class="h5 mb-0 font-weight-bold text-gray-800">{{nCampos}}
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -169,72 +172,73 @@
 
                     <!-- Content Row -->
                     <div class="row justify-content-start">
-                            <div class="col-md-auto" id="imagem">
-                                <input type="file" id="input-inserir-imagem" accept="image/*"
-                                    onchange="previewImagem(event)">
-                                <div id="quadrado-inserir-imagem">
-                                    <label id="labelImagem" for="input-inserir-imagem">Inserir imagem</label>
-                                </div>
-                                <input type="text" id="input-fundo" name="Nome" class="inputs"
-                                    placeholder="Insira o nome" onfocus="this.placeholder = 'Insira o nome'"
-                                    oninput="if (this.value !== '') this.placeholder = ''">
+                        <div class="col-md-auto" id="imagem">
+                            <input type="file" id="input-inserir-imagem" accept="image/*"
+                                onchange="previewImagem(event)">
+                            <div id="quadrado-inserir-imagem">
+                                <label id="labelImagem" for="input-inserir-imagem">Inserir imagem</label>
+                            </div>
+                            <input type="text" id="input-fundo" name="Nome" class="inputs" placeholder="Insira o nome"
+                                onfocus="this.placeholder = 'Insira o nome'"
+                                oninput="if (this.value !== '') this.placeholder = ''">
 
-                            </div>
-                            <div class="col-md-auto" id="labelsCampo">
-                                <div class="row justify-content-start" id="labelsCampoLinha1">
-                                    <div class="col-md-auto">
-                                        <label class="labels" id="labelLocalizacao">Localização:</label>
-                                        <input type="text" id="input-localizacao" name="Localizacao" class="inputs">
-                                    </div>
-                                    <div class="col-md-auto">
-                                        <label class="labels" id="labelBalnearios">Balnearios:</label>
-                                        <input type="text" id="input-balnearios" name="Balnearios" class="inputs">
-                                    </div>
-                                    <div class="col-md-auto">
-                                        <label class="labels" id="labelRelvado">Relvado:</label>
-                                        <select name="Relvado" class="inputs">
-                                            <option value="Sintetico">Sintetico</option>
-                                            <option value="Natural">Natural</option>
-                                        </select>
-                                    </div>
+                        </div>
+                        <div class="col-md-auto" id="labelsCampo">
+                            <div class="row justify-content-start" id="labelsCampoLinha1">
+                                <div class="col-md-auto">
+                                    <label class="labels" id="labelLocalizacao">Localização:</label>
+                                    <input type="text" id="input-localizacao" name="Localizacao" class="inputs">
                                 </div>
-                                <div class="row justify-content-center">
-                                    <div class="col-md-auto">
-                                        <label class="labels" id="labelOutros">Outros:</label>
-                                        <input type="text" id="input-fundo" name="Outros" class="inputs">
-                                    </div>
-                                    <div class="col-md-auto">
-                                        <label class="labels" id="labelPreco">Preço(/h):</label>
-                                        <input type="text" id="input-fundo" name="Preco" class="inputs">
-                                    </div>
+                                <div class="col-md-auto">
+                                    <label class="labels" id="labelBalnearios">Balnearios:</label>
+                                    <input type="text" id="input-balnearios" name="Balnearios" class="inputs">
                                 </div>
-                                <div class="row justify-content-start" id="BolaColetes">
-                                    <div class="col-md-auto">
-                                        <label class="labels" id="labelBola">Bola:</label>
-                                        <select name="Bola" class="inputs">
-                                            <option value="Nao">Não</option>
-                                            <option value="Sim">Sim</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-auto">
-                                        <label class="labels" id="labelColetes">Coletes:</label>
-                                        <select name="Coletes" class="inputs">
-                                            <option value="Nao">Não</option>
-                                            <option value="Sim">Sim</option>
-                                        </select>
-                                    </div>
+                                <div class="col-md-auto">
+                                    <label class="labels" id="labelRelvado">Relvado:</label>
+                                    <select name="Relvado" class="inputs">
+                                        <option value="Sintetico">Sintetico</option>
+                                        <option value="Natural">Natural</option>
+                                    </select>
                                 </div>
                             </div>
+                            <div class="row justify-content-center">
+                                <div class="col-md-auto">
+                                    <label class="labels" id="labelOutros">Outros:</label>
+                                    <input type="text" id="input-fundo" name="Outros" class="inputs">
+                                </div>
+                                <div class="col-md-auto">
+                                    <label class="labels" id="labelPreco">Preço(/h):</label>
+                                    <input type="text" id="input-fundo" name="Preco" class="inputs">
+                                </div>
+                            </div>
+                            <div class="row justify-content-start" id="BolaColetes">
+                                <div class="col-md-auto">
+                                    <label class="labels" id="labelBola">Bola:</label>
+                                    <select name="Bola" class="inputs">
+                                        <option value="Nao">Não</option>
+                                        <option value="Sim">Sim</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-auto">
+                                    <label class="labels" id="labelColetes">Coletes:</label>
+                                    <select name="Coletes" class="inputs">
+                                        <option value="Nao">Não</option>
+                                        <option value="Sim">Sim</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-
             </div>
 
 
-
-
         </div>
+
+
+
+
+    </div>
     </div>
     <!-- End of Main Content -->
 

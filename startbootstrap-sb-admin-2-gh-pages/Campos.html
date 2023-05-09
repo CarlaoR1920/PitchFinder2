@@ -187,7 +187,7 @@
                                 </thead>
                                 <tbody id="TabelaCampos">
                                     <tr v-for="item in items" >
-                                        <td><a href="ConsulatarProfissionais.html">{{ item.Nome }}</a></td>
+                                        <td><a v-on:click="verCampo(item)">{{ item.Nome }}</a></td>
                                         <td>{{ item.Localizacao }}</td>
                                         <td>{{ item.Relvado }}</td>
                                         <td>{{ item.Preco}}€</td>
