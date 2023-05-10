@@ -141,7 +141,7 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Campos</h1>
                         
-                        <button type="button" class="btn" id="GuardarDadosCampo" onclick="RegistarAlterações()">Guardar</button>
+                        <button type="button" class="btn" id="GuardarDadosCampo" onclick="RegistarAlteraçõesCampo()">Guardar</button>
                     </div>
 
                     <!-- Content Row -->
@@ -190,7 +190,7 @@
                                 </div>
                                 <div class="col-md-auto">
                                     <label class="labels" id="labelRelvado">Relvado:</label>
-                                    <select name="Relvado" class="inputs" v-model="Relvado">
+                                    <select id=input-relvado name="Relvado" class="inputs" v-model="Relvado">
                                         <option value="Sintetico">Sintetico</option>
                                         <option value="Natural">Natural</option>
                                     </select>
@@ -199,24 +199,24 @@
                             <div class="row justify-content-center">
                                 <div class="col-md-auto">
                                     <label class="labels" id="labelOutros">Outros:</label>
-                                    <input type="text" id="input-fundo" name="Outros" class="inputs" v-model="Outros">
+                                    <input type="text" id="input-Outros" name="Outros" class="inputs" v-model="Outros">
                                 </div>
                                 <div class="col-md-auto">
                                     <label class="labels" id="labelPreco">Preço(/h):</label>
-                                    <input type="text" id="input-fundo" name="Preco" class="inputs" v-model="Preco">
+                                    <input type="text" id="input-Preco" name="Preco" class="inputs" v-model="Preco">
                                 </div>
                             </div>
                             <div class="row justify-content-start" id="BolaColetes">
                                 <div class="col-md-auto">
                                     <label class="labels" id="labelBola">Bola:</label>
-                                    <select name="Bola" class="inputs" v-model="Bola">
+                                    <select id="input-bola" name="Bola" class="inputs" v-model="Bola">
                                         <option value="Nao">Não</option>
                                         <option value="Sim">Sim</option>
                                     </select>
                                 </div>
                                 <div class="col-md-auto">
                                     <label class="labels" id="labelColetes">Coletes:</label>
-                                    <select name="Coletes" class="inputs" v-model="Coletes">
+                                    <select id="input-coletes" name="Coletes" class="inputs" v-model="Coletes">
                                         <option value="Nao">Não</option>
                                         <option value="Sim">Sim</option>
                                     </select>
@@ -228,7 +228,7 @@
                 </div>
             
                 <div class="row justify-content-center" id="BolaColetes">
-                    <button type="button" class="btn" id="GuardarDadosCampo" onclick="ApagarCampo()">Apagar Campo</button>
+                    <button type="button" class="btn btn-primary btn-lg" id="ApagarCampo" onclick="ApagarCampo()">Apagar Campo</button>
                 </div>
 
 

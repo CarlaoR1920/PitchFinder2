@@ -12685,6 +12685,8 @@ thead {
 
 
 
+
+
 #LabelsCampo {
     text-align: left;
     color: #1C7A04;
@@ -12855,7 +12857,8 @@ thead {
     cursor: pointer;
 }
 
-#quadrado-inserir-imagem {
+#quadrado-inserir-imagem,
+#quadrado-inserir-imagem_Reservas {
     width: 400px;
     height: 300px;
     background-color: #ccc;
@@ -12873,4 +12876,8 @@ thead {
 
 #BolaColetes{
     margin-top: 10px;
+}
+
+#ApagarCampo{
+    margin-top: 100px;
 }
