@@ -71,7 +71,6 @@
         $('.btn-play').click(function () {
             $videoSrc = $(this).data("src");
         });
-        console.log($videoSrc);
 
         $('#videoModal').on('shown.bs.modal', function (e) {
             $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
@@ -181,9 +180,21 @@ function Login(event) {
     } else {
         alert('Este utilizador não existe.');
     }
-
-
-
-
 }
+
+    const CamposDisponiveis = new Vue({
+        el: '#CamposDisponiveis',
+        data: {
+          items: []
+        },
+        mounted() {
+          const data = localStorage.getItem('Campos');
+          if (data) {
+            const parsedData = JSON.parse(data);
+            this.items = parsedData;
+          }
+        },
+      });
+
+ 
 

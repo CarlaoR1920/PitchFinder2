@@ -515,7 +515,7 @@ SS **********/
     border-right: none;
 }
 
-<<<<<<< HEAD
+
 .box-form {
     margin: 0 auto;
     width: 80%;
@@ -671,7 +671,7 @@ SS **********/
   label input[type="checkbox"] {
     display: none;
   }
-=======
+
 #home-button {
     color: #1C7A04;
 }
@@ -747,4 +747,13 @@ SS **********/
     margin-top: 100px;
 
   }
->>>>>>> b424c5516af990e83bd4ccb9c256a335a075b81a
+
+
+#quadrado-inserir-imagem {
+    width: 400px;
+    height: 300px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
