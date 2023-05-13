@@ -171,7 +171,7 @@ function Login(event) {
     console.log(utilizador);
     if (utilizador !== -1) {
         if (a[utilizador].Password == pass.value) {
-            sessionStorage.setItem("UtilizadorLigado",JSON.stringify(a[utilizador]) )
+            sessionStorage.setItem("UtilizadorLigado", JSON.stringify(a[utilizador]))
             window.location.href = "index.html";
         } else {
             alert('A palavra-passe está incorreta.');
@@ -182,19 +182,38 @@ function Login(event) {
     }
 }
 
-    const CamposDisponiveis = new Vue({
-        el: '#CamposDisponiveis',
-        data: {
-          items: []
-        },
-        mounted() {
-          const data = localStorage.getItem('Campos');
-          if (data) {
+const CamposDisponiveis = new Vue({
+    el: '#ola',
+    data: {
+        items: [],
+        Localizacoes: []
+    },
+    mounted() {
+        const data = localStorage.getItem('Campos');
+        if (data) {
             const parsedData = JSON.parse(data);
             this.items = parsedData;
-          }
+            this.Localizacoes = this.items;
+        }
+    },
+    methods: {
+        hello() {
+            const select = document.getElementById("SelectLocalizacao");
+            const campos = localStorage.getItem('Campos');
+            const camposJ = JSON.parse(campos);
+            let a = [];
+            for (let i = 0; i < camposJ.length; i++) {
+                if(camposJ[i].Localizacao === select.value){
+                    a.push(camposJ[i]);
+                }
+              }
+            
+            this.items = a;
         },
-      });
+    },
+    
+});
 
- 
+
+
 
