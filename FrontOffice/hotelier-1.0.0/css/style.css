@@ -759,9 +759,18 @@ SS **********/
 }
 
 
-
+#quadrado-inserir-imagem2 {
+    width: 200px;
+    height: 130px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
   
   
-  
+.image-container {
+    margin-top: 55px;
+  }
   
   

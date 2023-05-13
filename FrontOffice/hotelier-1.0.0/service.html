@@ -150,9 +150,17 @@
             <div class="container">
               <div class="bg-white shadow" style="padding: 35px;">
                 <div class="row g-2">
-                  <div class="col-md-12">
+                  <div class="col-md-3">
+                    <div class="ImagensCampos mb-3" id="quadrado-inserir-imagem2" :style="{
+                      'background-image': item.Imagem,
+                      'background-size': 'cover',
+                      'background-position': 'center',
+                      'background-repeat': 'no-repeat',
+                    }"></div>
+                  </div>
+                  <div class="col-md-9 image-container">
                     <div class="d-flex justify-content-end">
-                      <div class="btn-container" style="overflow-x: auto; white-space: nowrap; width: 75%;">
+                      <div class="btn-container" style="overflow-x: auto; white-space: nowrap; width: 100%;">
                         <button class="btn corverdeebranco">8:00</button>
                         <button class="btn corverdeebranco">9:00</button>
                         <button class="btn corverdeebranco">10:00</button>
