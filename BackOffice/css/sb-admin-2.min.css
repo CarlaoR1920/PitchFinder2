@@ -12881,3 +12881,12 @@ thead {
 #ApagarCampo{
     margin-top: 100px;
 }
+
+#input-User,
+#input-Pass{
+    width: 350px;
+    border: none;
+    margin-top: 20px;
+    font-size: 36px;
+    height: 60px;
+}

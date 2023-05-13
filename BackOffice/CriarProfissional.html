@@ -138,7 +138,8 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Profissionais</h1>
-                        <button form="formulario" class="btn" id="RegistarPro" onclick="RegistarProfissional(event)">Registar</button>
+                        <button form="formulario" class="btn" id="RegistarPro"
+                            onclick="RegistarProfissional(event)">Registar</button>
                     </div>
 
                     <!-- Content Row -->
@@ -200,11 +201,22 @@
                                     <label class="labels1" id="labelEmail">Email:</label>
                                     <input type="email" name="Email" id="input-Email" class="inputsPro">
                                 </div>
-                                <div class="row justify-content-start">
-                                    <label class="labels1" id="labelContacto">Contacto:</label>
-                                    <input type="tel" name="Contacto" id="input-Contacto" class="inputsPro"
-                                        maxlength="11">
+                                <div class="col">
+                                    <div class="row justify-content-start">
+                                        <label class="labels1" id="labelContacto">Contacto:</label>
+                                        <input type="tel" name="Contacto" id="input-Contacto" class="inputsPro"
+                                            maxlength="11">
+                                    </div>
+                                    <div class="row justify-content-start">
+                                    </div>
+                                    <div class="row justify-content-start">
+                                        <label class="labels1" id="labelContacto">UserName:</label>
+                                        <input type="text" id="input-User" >
+                                        <label class="labels1" id="labelContacto">Password:</label>
+                                        <input type="password" id="input-Pass">
+                                    </div>
                                 </div>
+
                             </div>
 
                     </div>

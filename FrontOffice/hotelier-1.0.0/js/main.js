@@ -115,6 +115,7 @@ function RegistarUtilizador(event) {
     const pass = document.querySelector("#pass");
     const passconf = document.querySelector("#passconf");
     let data = {};
+    //let data2 = {};
     if (nome.value == null || nome.value == "") {
         alert('Por favor insira o seu nome.');
         return;
@@ -138,7 +139,13 @@ function RegistarUtilizador(event) {
         data["Nome"] = nome.value;
         data["Email"] = email.value;
         data["Password"] = pass.value;
+        data["Tipo"] = "Cliente"
         SaveDataToLocalStorageClientes(data);
+        /*data2["Nome"] = "Admin";
+        data2["Email"] = "Admin@adm.com";
+        data2["Password"] = "Admin";
+        data2["Tipo"] = "Admin"
+        SaveDataToLocalStorageClientes(data2);*/
         alert('Registado com sucesso!');
         window.location.href = "Login.html";
     }
@@ -147,9 +154,9 @@ function RegistarUtilizador(event) {
 
 function SaveDataToLocalStorageClientes(data) {
     let a = [];
-    a = JSON.parse(localStorage.getItem("Clientes")) || [];
+    a = JSON.parse(localStorage.getItem("Utilizadores")) || [];
     a.push(data);
-    localStorage.setItem("Clientes", JSON.stringify(a));
+    localStorage.setItem("Utilizadores", JSON.stringify(a));
 }
 
 function Login(event) {
@@ -165,10 +172,9 @@ function Login(event) {
         alert('Por favor insira a sua password.');
         return;
     }
-    let a = JSON.parse(localStorage.getItem("Clientes"))
+    let a = JSON.parse(localStorage.getItem("Utilizadores"))
 
     var utilizador = a.findIndex(item => item.Nome === nome.value);
-    console.log(utilizador);
     if (utilizador !== -1) {
         if (a[utilizador].Password == pass.value) {
             sessionStorage.setItem("UtilizadorLigado", JSON.stringify(a[utilizador]))
