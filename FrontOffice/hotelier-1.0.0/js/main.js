@@ -216,10 +216,26 @@ const CamposDisponiveis = new Vue({
             
             this.items = a;
         },
+        ReservasCampo(item) {
+            sessionStorage.setItem("CampoEscolhido", JSON.stringify(item));
+             window.location.href = "service.html";
+            
+        },
     },
     
 });
-
+const CampoaReservar = new Vue({
+    el: '#123',
+    data: {
+    imagemvar: "",
+    },
+    mounted() {
+        const data = sessionStorage.getItem('CampoEscolhido');
+        const dados = JSON.parse(data);
+        this.imagemvar = dados.Imagem;
+    },
+    
+});
 
 
 
