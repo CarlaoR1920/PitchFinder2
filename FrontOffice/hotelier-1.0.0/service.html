@@ -30,10 +30,12 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
 </head>
 
 <body>
-    <div class="container-xxl bg-white p-0 " id="123">
+    <div class="container-xxl bg-white p-0"  id="tatudo">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -152,7 +154,7 @@
                 <div class="row g-2">
                   <div class="col-md-3">
                     <div class="ImagensCampos mb-3" id="quadrado-inserir-imagem2" :style="{
-                      'background-image': imagemvar,
+                      'background-image': imagem,
                       'background-size': 'cover',
                       'background-position': 'center',
                       'background-repeat': 'no-repeat',

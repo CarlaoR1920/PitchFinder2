@@ -209,32 +209,35 @@ const CamposDisponiveis = new Vue({
             const camposJ = JSON.parse(campos);
             let a = [];
             for (let i = 0; i < camposJ.length; i++) {
-                if(camposJ[i].Localizacao === select.value){
+                if (camposJ[i].Localizacao === select.value) {
                     a.push(camposJ[i]);
                 }
-              }
-            
+            }
+
             this.items = a;
         },
         ReservasCampo(item) {
             sessionStorage.setItem("CampoEscolhido", JSON.stringify(item));
-             window.location.href = "service.html";
-            
+            window.location.href = "service.html";
+
         },
     },
-    
+
 });
+
 const CampoaReservar = new Vue({
-    el: '#123',
+    el: '#tatudo',
     data: {
-    imagemvar: "",
+        imagem: "",
     },
     mounted() {
         const data = sessionStorage.getItem('CampoEscolhido');
         const dados = JSON.parse(data);
-        this.imagemvar = dados.Imagem;
+        this.imagem = dados.Imagem;
+        console.log(dados.Imagem);
+        console.log(this.imagem);
     },
-    
+
 });
 
 
