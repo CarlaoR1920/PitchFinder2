@@ -110,17 +110,26 @@
 
 function RegistarUtilizador(event) {
     event.preventDefault();
+    let a = [];
+    a = JSON.parse(localStorage.getItem("Utilizadores")) || [];
     const nome = document.querySelector("#nome");
     const email = document.querySelector("#email");
     const pass = document.querySelector("#pass");
     const passconf = document.querySelector("#passconf");
     let data = {};
-    //let data2 = {};
     if (nome.value == null || nome.value == "") {
         alert('Por favor insira o seu nome.');
         return;
     }
-    else if (email.value == null || email.value == "") {
+    var itemIndex = a.findIndex(item => item.Nome === nome.value);
+
+    if(itemIndex !== -1){
+        alert('Esse nome já pertence a outro utilizador.');
+        return;
+    }
+
+    //let data2 = {};
+    if (email.value == null || email.value == "") {
         alert('Por favor insira o seu email.');
         return;
     } else if (pass.value == null || pass.value == "") {
@@ -129,12 +138,10 @@ function RegistarUtilizador(event) {
     } else if (passconf.value == null || passconf.value == "") {
         alert('Por favor insira a sua confirmacao da password.');
         return;
-    }
-    else if (pass.value != passconf.value) {
+    }else if (pass.value != passconf.value) {
         alert('A password de confirmação não corresponde à password inserida\n Insira novamente!');
         return;
-    }
-    else {
+    }else{
 
         data["Nome"] = nome.value;
         data["Email"] = email.value;
