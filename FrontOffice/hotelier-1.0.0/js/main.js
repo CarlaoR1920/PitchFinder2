@@ -251,10 +251,8 @@ function iniciarPag() {
 
     if (sessionStorage.getItem("UtilizadorLigado") === null) {
         document.getElementById("perfil12").remove();
-        console.log(1)
     } else {
         document.getElementById("login12").remove();
-        console.log(2)
     }
 }
 
