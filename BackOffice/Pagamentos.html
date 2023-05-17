@@ -66,7 +66,7 @@
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="Campos.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Campos</span></a>
@@ -84,7 +84,7 @@
                     <span>Pedidos Parceria</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Pagamentos.html">
+                <a class="nav-link active" href="Pagamentos.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Pagamentos</span></a>
             </li>
@@ -114,7 +114,7 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
+                        
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -151,104 +151,93 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Campos</h1>
-                        
-                        <button type="button" class="btn" id="GuardarDadosCampo" onclick="RegistarAlteraçõesCampo()">Guardar</button>
+                        <button type="button" class="btn" id="CreateCampo" onclick="CriarCampos()">Criar Campo</button>
                     </div>
 
                     <!-- Content Row -->
                     <div class="row">
 
-
-
                         <!-- Campos Afiliados Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4" id="Card3">
-                            <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="col-xl-3 col-md-6 mb-4" id="Card2">
+                            <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Nº Campos</div>
-                                            <div id="nCampos" class="h5 mb-0 font-weight-bold text-gray-800">{{nCampos}}
-                                            </div>
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Lucro(Total)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18.000€</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-xl-3 col-md-6 mb-4" id="Card2">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Lucro(Mês atual)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">10.000€</div>
+                                        </div>
+                                        <div class="col-auto">
+
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
-
-
 
                     <!-- Content Row -->
-                    <div class="row justify-content-start" id="labelsCampo">
-                        <div class="col-md-auto" id="imagem">
-                            <div id="quadrado-inserir-imagem"></div>
-                            <input type="text" id="input-fundo" name="Nome" class="inputs" v-model="Nome">
 
+                    <div class="row">
+
+                        <!-- DataTales Example -->
+
+
+
+
+                        <div class="table-responsive" id="tabelaCampos">
+                            <table class="table table-borderless" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Valor</th>
+                                        <th>Envolvido</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="TabelaCampos">
+                                    <tr v-for="item in items" >
+                                        <td><a v-on:click="verCampo(item)">{{ item.Data }}</a></td>
+                                        <td>{{ item.Valor }}</td>
+                                        <td>{{ item.Envolvido }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="col-md-auto" >
-                            <div class="row justify-content-start" id="labelsCampoLinha1">
-                                <div class="col-md-auto">
-                                    <label class="labels" id="labelLocalizacao">Localização:</label>
-                                    <input type="text" id="input-localizacao" name="Localizacao" class="inputs" v-model="Localizacao">
-                                </div>
-                                <div class="col-md-auto">
-                                    <label class="labels" id="labelBalnearios">Balnearios:</label>
-                                    <input type="text" id="input-balnearios" name="Balnearios" class="inputs" v-model="Balnearios">
-                                </div>
-                                <div class="col-md-auto">
-                                    <label class="labels" id="labelRelvado">Relvado:</label>
-                                    <select id=input-relvado name="Relvado" class="inputs" v-model="Relvado">
-                                        <option value="Sintetico">Sintetico</option>
-                                        <option value="Natural">Natural</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col-md-auto">
-                                    <label class="labels" id="labelOutros">Outros:</label>
-                                    <input type="text" id="input-Outros" name="Outros" class="inputs" v-model="Outros">
-                                </div>
-                                <div class="col-md-auto">
-                                    <label class="labels" id="labelPreco">Preço(/h):</label>
-                                    <input type="text" id="input-Preco" name="Preco" class="inputs" v-model="Preco">
-                                </div>
-                            </div>
-                            <div class="row justify-content-start" id="BolaColetes">
-                                <div class="col-md-auto">
-                                    <label class="labels" id="labelBola">Bola:</label>
-                                    <select id="input-bola" name="Bola" class="inputs" v-model="Bola">
-                                        <option value="Nao">Não</option>
-                                        <option value="Sim">Sim</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-auto">
-                                    <label class="labels" id="labelColetes">Coletes:</label>
-                                    <select id="input-coletes" name="Coletes" class="inputs" v-model="Coletes">
-                                        <option value="Nao">Não</option>
-                                        <option value="Sim">Sim</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+
+
+
                     </div>
-                    
-                </div>
-            
-                <div class="row justify-content-center" id="BolaColetes">
-                    <button type="button" class="btn btn-primary btn-lg" id="ApagarCampo" onclick="ApagarCampo()">Apagar Campo</button>
-                </div>
 
+                    <div class="row">
 
+                        
+
+                    </div>
+                </div>
             </div>
-        </div>
-        <!-- End of Main Content -->
+            <!-- End of Main Content -->
 
-    </div>
-    <!-- End of Content Wrapper -->
+        </div>
+        <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
