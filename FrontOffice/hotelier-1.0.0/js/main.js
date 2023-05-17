@@ -123,7 +123,7 @@ function RegistarUtilizador(event) {
     }
     var itemIndex = a.findIndex(item => item.Nome === nome.value);
 
-    if(itemIndex !== -1){
+    if (itemIndex !== -1) {
         alert('Esse nome já pertence a outro utilizador.');
         return;
     }
@@ -138,10 +138,10 @@ function RegistarUtilizador(event) {
     } else if (passconf.value == null || passconf.value == "") {
         alert('Por favor insira a sua confirmacao da password.');
         return;
-    }else if (pass.value != passconf.value) {
+    } else if (pass.value != passconf.value) {
         alert('A password de confirmação não corresponde à password inserida\n Insira novamente!');
         return;
-    }else{
+    } else {
 
         data["Nome"] = nome.value;
         data["Email"] = email.value;
@@ -246,6 +246,18 @@ const CampoaReservar = new Vue({
     },
 
 });
+
+function iniciarPag() {
+
+    if (sessionStorage.getItem("UtilizadorLigado") === null) {
+        document.getElementById("perfil12").remove();
+        console.log(1)
+    } else {
+        document.getElementById("login12").remove();
+        console.log(2)
+    }
+}
+
 
 
 
