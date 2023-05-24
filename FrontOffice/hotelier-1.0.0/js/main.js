@@ -253,8 +253,14 @@ function iniciarPag() {
 
     if (sessionStorage.getItem("UtilizadorLigado") === null) {
         document.getElementById("perfil12").remove();
+        document.getElementById("BackOffice").remove();
     } else {
         document.getElementById("login12").remove();
+    }
+    BackOffice
+
+    if (JSON.parse(sessionStorage.getItem("UtilizadorLigado")).Tipo === "Cliente") {
+        document.getElementById("BackOffice").remove();
     }
 }
 
