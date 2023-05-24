@@ -215,6 +215,10 @@ const CamposDisponiveis = new Vue({
             const campos = localStorage.getItem('Campos');
             const camposJ = JSON.parse(campos);
             let a = [];
+            if(select.value=== "Nada"){
+                this.items = camposJ;
+                return;
+            }
             for (let i = 0; i < camposJ.length; i++) {
                 if (camposJ[i].Localizacao === select.value) {
                     a.push(camposJ[i]);
@@ -241,8 +245,6 @@ const CampoaReservar = new Vue({
         const data = sessionStorage.getItem('CampoEscolhido');
         const dados = JSON.parse(data);
         this.imagem = dados.Imagem;
-        console.log(dados.Imagem);
-        console.log(this.imagem);
     },
 
 });
