@@ -12890,3 +12890,7 @@ thead {
     font-size: 36px;
     height: 60px;
 }
+
+a{
+    cursor: pointer;
+}

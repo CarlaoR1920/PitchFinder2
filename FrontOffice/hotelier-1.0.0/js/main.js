@@ -110,17 +110,26 @@
 
 function RegistarUtilizador(event) {
     event.preventDefault();
+    let a = [];
+    a = JSON.parse(localStorage.getItem("Utilizadores")) || [];
     const nome = document.querySelector("#nome");
     const email = document.querySelector("#email");
     const pass = document.querySelector("#pass");
     const passconf = document.querySelector("#passconf");
     let data = {};
-    //let data2 = {};
     if (nome.value == null || nome.value == "") {
         alert('Por favor insira o seu nome.');
         return;
     }
-    else if (email.value == null || email.value == "") {
+    var itemIndex = a.findIndex(item => item.Nome === nome.value);
+
+    if (itemIndex !== -1) {
+        alert('Esse nome já pertence a outro utilizador.');
+        return;
+    }
+
+    //let data2 = {};
+    if (email.value == null || email.value == "") {
         alert('Por favor insira o seu email.');
         return;
     } else if (pass.value == null || pass.value == "") {
@@ -129,12 +138,10 @@ function RegistarUtilizador(event) {
     } else if (passconf.value == null || passconf.value == "") {
         alert('Por favor insira a sua confirmacao da password.');
         return;
-    }
-    else if (pass.value != passconf.value) {
+    } else if (pass.value != passconf.value) {
         alert('A password de confirmação não corresponde à password inserida\n Insira novamente!');
         return;
-    }
-    else {
+    } else {
 
         data["Nome"] = nome.value;
         data["Email"] = email.value;
@@ -208,6 +215,10 @@ const CamposDisponiveis = new Vue({
             const campos = localStorage.getItem('Campos');
             const camposJ = JSON.parse(campos);
             let a = [];
+            if(select.value=== "Nada"){
+                this.items = camposJ;
+                return;
+            }
             for (let i = 0; i < camposJ.length; i++) {
                 if (camposJ[i].Localizacao === select.value) {
                     a.push(camposJ[i]);
@@ -234,8 +245,6 @@ const CampoaReservar = new Vue({
         const data = sessionStorage.getItem('CampoEscolhido');
         const dados = JSON.parse(data);
         this.imagem = dados.Imagem;
-        console.log(dados.Imagem);
-        console.log(this.imagem);
     },
 
 });
@@ -249,5 +258,22 @@ function fecharconf() {
     document.getElementById('modal123').style.display = 'none';
     document.getElementById('overlay123').style.display = 'none';
   }
+function iniciarPag() {
+
+    if (sessionStorage.getItem("UtilizadorLigado") === null) {
+        document.getElementById("perfil12").remove();
+        document.getElementById("BackOffice").remove();
+    } else {
+        document.getElementById("login12").remove();
+    }
+    BackOffice
+
+    if (JSON.parse(sessionStorage.getItem("UtilizadorLigado")).Tipo === "Cliente") {
+        document.getElementById("BackOffice").remove();
+    }
+}
+
+
+
 
   

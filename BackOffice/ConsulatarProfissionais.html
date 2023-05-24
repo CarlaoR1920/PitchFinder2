@@ -25,9 +25,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="perfil()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -56,24 +59,36 @@
                     <span>Dashboards</span></a>
             </li>
 
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="Reservas.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-calendar"></i>
                     <span>Reservas</span></a>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="Campos.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fa-regular  fa-futbol " ></i>
                     <span>Campos</span></a>
             </li>
 
             <li class="nav-item active">
                 <a class="nav-link" href="Profissionais.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fa-solid fa-person"></i>
                     <span>Profissionais</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="PedidosParceria.html">
+                    <i class="fa-solid fa-handshake "></i>
+                    <span>Pedidos Parceria</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Pagamentos.html">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>Pagamentos</span></a>
             </li>
 
 
@@ -109,7 +124,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span id="NomePerf" class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -149,16 +164,17 @@
 
                         <!-- Campos Afiliados Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4" id="Card3">
-                            <div class="card border-left-primary shadow h-100 py-2" >
-                                <div class="card-body" >
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Nº Profissionais</div>
-                                            <div id="nPros" class="h5 mb-0 font-weight-bold text-gray-800">{{nPros}}</div>
+                                            <div id="nPros" class="h5 mb-0 font-weight-bold text-gray-800">{{nPros}}
+                                            </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            <i class="fa-solid fa-person fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -189,9 +205,9 @@
                                 <input type="date" id="input-Nascimento" class="inputsPro" v-model="Dob">
 
                                 <label class="labels1" id="labelCampo">Campo:</label>
-                                    <select id="SelectCampos2" class="inputsPro" name="Campo" v-model="Campo">
-                                        <option v-for="item in items" :value="item.Nome">{{item.Nome}}</option>
-                                    </select>
+                                <select id="SelectCampos2" class="inputsPro" name="Campo" v-model="Campo">
+                                    <option v-for="item in items" :value="item.Nome">{{item.Nome}}</option>
+                                </select>
                             </div>
                             <div class="row justify-content-start">
                                 <label class="labels1" id="labelEmail">Email:</label>
@@ -199,15 +215,17 @@
                             </div>
                             <div class="row justify-content-start">
                                 <label class="labels1" id="labelContacto">Contacto:</label>
-                                <input type="tel" id="input-Contacto" class="inputsPro" maxlength="11" v-model="Contacto">
+                                <input type="tel" id="input-Contacto" class="inputsPro" maxlength="11"
+                                    v-model="Contacto">
                             </div>
                             <div class="row justify-content-center" id="BolaColetes">
-                                <button type="button" class="btn btn-primary btn-lg" id="ApagarCampo" onclick="ApagarPro()">Apagar Profissiomal</button>
+                                <button type="button" class="btn btn-primary btn-lg" id="ApagarCampo"
+                                    onclick="ApagarPro()">Apagar Profissiomal</button>
                             </div>
                         </div>
-                        
+
                     </div>
-                    
+
                 </div>
 
 

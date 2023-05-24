@@ -25,9 +25,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="perfil()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -59,21 +61,32 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="Reservas.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-calendar"></i>
                     <span>Reservas</span></a>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="Campos.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fa-regular  fa-futbol " ></i>
                     <span>Campos</span></a>
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="Profissionais.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                <a class="nav-link active" href="Profissionais.html">
+                    <i class="fa-solid fa-person"></i>
                     <span>Profissionais</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="PedidosParceria.html">
+                    <i class="fa-solid fa-handshake "></i>
+                    <span>Pedidos Parceria</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Pagamentos.html">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>Pagamentos</span></a>
             </li>
 
 
@@ -109,7 +122,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span id="NomePerf" class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -158,7 +171,7 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            <i class="fa-solid fa-person fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
