@@ -119,12 +119,12 @@
                              <div class="row g-2 r">
                                 <div class="col-md-4">
                                     <div class="date" id="date2" data-target-input="nearest">
-                                        </i> <input type="text" class="reservardata datetimepicker-input" placeholder="Hora início" data-target="#date2" data-toggle="datetimepicker"/>
+                                        </i> <input type="time"  placeholder="Hora início" class="hour-input" step="3600"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="date" id="date2" data-target-input="nearest">
-                                        </i><input type="text" class="reservardata  datetimepicker-input" placeholder="Hora fim" data-target="#date2" data-toggle="datetimepicker"/> 
+                                        </i><input type="time"  placeholder="Hora fim" class="hour-input" step="3600"/> 
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -163,24 +163,40 @@
                   <div class="col-md-9 image-container">
                     <div class="d-flex justify-content-end">
                       <div class="btn-container" style="overflow-x: auto; white-space: nowrap; width: 100%;">
-                        <button class="btn corverdeebranco">8:00</button>
-                        <button class="btn corverdeebranco">9:00</button>
-                        <button class="btn corverdeebranco">10:00</button>
-                        <button class="btn corverdeebranco">11:00</button>
-                        <button class="btn corverdeebranco">12:00</button>
-                        <button class="btn corverdeebranco">13:00</button>
-                        <button class="btn corverdeebranco">14:00</button>
-                        <button class="btn corverdeebranco">15:00</button>
-                        <button class="btn corverdeebranco">16:00</button>
-                        <button class="btn corverdeebranco">17:00</button>
-                        <button class="btn corverdeebranco">18:00</button>
-                        <button class="btn corverdeebranco">19:00</button>
-                        <button class="btn corverdeebranco">20:00</button>
-                        <button class="btn corverdeebranco">21:00</button>
-                        <button class="btn corverdeebranco">22:00</button>
-                        <button class="btn corverdeebranco">23:00</button>
-                        <button class="btn corverdeebranco">00:00</button>
+                        <button onclick="confirmar('8:00')" class="btn corverdeebranco">8:00</button>
+                        <button onclick="confirmar('9:00')" class="btn corverdeebranco">9:00</button>
+                        <button onclick="confirmar('10:00')" class="btn corverdeebranco">10:00</button>
+                        <button onclick="confirmar('11:00')" class="btn corverdeebranco">11:00</button>
+                        <button onclick="confirmar('12:00')" class="btn corverdeebranco">12:00</button>
+                        <button onclick="confirmar('13:00')" class="btn corverdeebranco">13:00</button>
+                        <button onclick="confirmar('14:00')" class="btn corverdeebranco">14:00</button>
+                        <button onclick="confirmar('15:00')" class="btn corverdeebranco">15:00</button>
+                        <button onclick="confirmar('16:00')" class="btn corverdeebranco">16:00</button>
+                        <button onclick="confirmar('17:00')" class="btn corverdeebranco">17:00</button>
+                        <button onclick="confirmar('18:00')" class="btn corverdeebranco">18:00</button>
+                        <button onclick="confirmar('19:00')" class="btn corverdeebranco">19:00</button>
+                        <button onclick="confirmar('20:00')" class="btn corverdeebranco">20:00</button>
+                        <button onclick="confirmar('21:00')" class="btn corverdeebranco">21:00</button>
+                        <button onclick="confirmar('22:00')" class="btn corverdeebranco">22:00</button>
+                        <button onclick="confirmar('23:00')" class="btn corverdeebranco">23:00</button>
+                        <button onclick="confirmar('00:00')" class="btn corverdeebranco">00:00</button>
                       </div>
+                    </div>
+                    <div id="overlay123" style="display: none;"></div>
+                    <div id="modal123"  style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header"> <!-- Modal Header -->
+                            <h4 class="modal-title">Confirmar Reserva</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div> <!-- Modal body -->
+                            <div class="modal-body">Modal body..</div> <!-- Modal footer -->
+                            <div class="modal-footer">
+                            <button onclick="fecharconf()" type="button" class="btn corverdeebranco" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn corverdeebranco" data-bs-dismiss="modal">Confirmar</button>
+                            </div>
+                            </div>
+                            </div>
                     </div>
                   </div>
                 </div>
@@ -189,7 +205,7 @@
           </div>
         <!-- Booking End -->
 
-        
+
         
 
         <!-- Footer Start -->

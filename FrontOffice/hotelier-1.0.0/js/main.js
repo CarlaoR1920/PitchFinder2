@@ -240,5 +240,14 @@ const CampoaReservar = new Vue({
 
 });
 
+function confirmar(x,y) {
+    document.getElementById('modal123').style.display = 'block';
+    document.getElementById('overlay123').style.display = 'block';
+}
+ 
+function fecharconf() {
+    document.getElementById('modal123').style.display = 'none';
+    document.getElementById('overlay123').style.display = 'none';
+  }
 
-
+  
