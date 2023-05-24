@@ -249,7 +249,15 @@ const CampoaReservar = new Vue({
 
 });
 
-function confirmar(x,y) {
+function confirmar(x) {
+    const data = document.getElementById("data").value
+    if(data === ""){
+        alert("Insira uma Data")
+        return;
+    }
+
+    
+
     document.getElementById('modal123').style.display = 'block';
     document.getElementById('overlay123').style.display = 'block';
 }
@@ -266,10 +274,23 @@ function iniciarPag() {
     } else {
         document.getElementById("login12").remove();
     }
-    BackOffice
-
     if (JSON.parse(sessionStorage.getItem("UtilizadorLigado")).Tipo === "Cliente") {
         document.getElementById("BackOffice").remove();
+    }
+}
+
+function horarios(){
+    const butoes = document.getElementsByClassName("horas");
+    const filtro = Number(document.getElementById("tempo").value);
+    
+    for(let i=0; i<butoes.length; i++)
+    {
+        if(Number(butoes[i].name) < filtro){
+            console.log("tou aqui")
+            butoes[i].style.display = "none";
+        }else{
+            butoes[i].style.display = "inline";
+        }
     }
 }
 
