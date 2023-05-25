@@ -22,12 +22,14 @@ SS **********/
     background-color: white;
     padding: 20px;
     z-index: 10000;
+    width: 500px;
   }
 
 
 .btn-primary {
     border-color: #1C7A04;
 }
+
 :root {
     --primary: #1C7A04;
     --light: #F1F8FF;
@@ -796,4 +798,8 @@ SS **********/
   
 .image-container {
     margin-top: 55px;
- }
+}
+
+#dibe{
+    margin-left: 280px;
+}

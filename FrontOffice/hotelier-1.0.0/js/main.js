@@ -215,7 +215,7 @@ const CamposDisponiveis = new Vue({
             const campos = localStorage.getItem('Campos');
             const camposJ = JSON.parse(campos);
             let a = [];
-            if(select.value=== "Nada"){
+            if (select.value === "Nada") {
                 this.items = camposJ;
                 return;
             }
@@ -249,23 +249,82 @@ const CampoaReservar = new Vue({
 
 });
 
+function obterDiaDaSemana(data) {
+    const diasDaSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+    const diaDaSemana = data.getDay();
+    return diasDaSemana[diaDaSemana];
+}
+
+function obterNomeMes(data) {
+    const nomeMes = data.toLocaleString('pt-BR', { month: 'long' });
+    return nomeMes;
+}
+
+function adicionarHora(hora, tempo) {
+    const partes = hora.split(':');
+    let horas = parseInt(partes[0]);
+    let minutos = parseInt(partes[1]);
+
+    horas += tempo;
+
+    if (horas === 24) {
+        horas = 0;
+    }
+    if (horas === 25) {
+        horas = 01;
+    }
+
+    const novaHora = `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
+    return novaHora;
+}
+
+
 function confirmar(x) {
-    const data = document.getElementById("data").value
-    if(data === ""){
+    const data1 = document.getElementById("data").value;
+    const paragrafo1 = document.getElementById("DataModal");
+    const paragrafo2 = document.getElementById("DataModal2");
+    const paragrafo3 = document.getElementById("DataModal3");
+    const horario = document.getElementById("opt120");
+    const campo = JSON.parse(sessionStorage.getItem("CampoEscolhido"))
+    if(campo ===  null){
+        alert("Volte a esolher um campo")
+        window.location.href = "campos.html";
+        return;
+    }
+    const data = new Date(data1);
+    if (data1 === "") {
         alert("Insira uma Data")
         return;
     }
 
-    
+    if (x === "00:00") {
+        horario.style.display = "none";
+    } else {
+        horario.style.display = "inline";
+    }
+
+
+    const nomeMes = obterNomeMes(data);
+    const diaSemana = obterDiaDaSemana(data);
 
     document.getElementById('modal123').style.display = 'block';
     document.getElementById('overlay123').style.display = 'block';
+    let texto = diaSemana + ", " + data.getDate() + " de " + nomeMes + " de " + data.getFullYear();
+    paragrafo1.innerHTML = texto;
+    texto = x + "-" + adicionarHora(x, 1);
+    paragrafo2.innerHTML = texto;
+    paragrafo3.style.fontWeight = "bold"
+    texto = "Total a Pagar: " + campo.Preco + "€";
+    paragrafo3.innerHTML = texto;
 }
- 
+
 function fecharconf() {
+    const horario = document.getElementById("tempo2");
+    horario.value = 1;
     document.getElementById('modal123').style.display = 'none';
     document.getElementById('overlay123').style.display = 'none';
-  }
+}
+
 function iniciarPag() {
 
     if (sessionStorage.getItem("UtilizadorLigado") === null) {
@@ -279,22 +338,40 @@ function iniciarPag() {
     }
 }
 
-function horarios(){
+function horarios() {
     const butoes = document.getElementsByClassName("horas");
     const filtro = Number(document.getElementById("tempo").value);
-    
-    for(let i=0; i<butoes.length; i++)
-    {
-        if(Number(butoes[i].name) < filtro){
+
+    for (let i = 0; i < butoes.length; i++) {
+        if (Number(butoes[i].name) < filtro) {
             console.log("tou aqui")
             butoes[i].style.display = "none";
-        }else{
+        } else {
             butoes[i].style.display = "inline";
         }
     }
 }
 
+function tempo() {
+    const horario = document.getElementById("tempo2");
+    const paragrafo2 = document.getElementById("DataModal2");
+    const paragrafo3 = document.getElementById("DataModal3");
+    const campo = JSON.parse(sessionStorage.getItem("CampoEscolhido"))
+
+    const partes = paragrafo2.innerHTML.split("-");
+    if(horario.value === "1"){
+        let texto2 = partes[0] + "-" + adicionarHora(partes[0], 1);
+        paragrafo2.innerHTML = texto2;
+        texto2 = "Total a Pagar: " + campo.Preco + "€";
+        paragrafo3.innerHTML = texto2;
+    }else{
+        let texto2 = partes[0] + "-" + adicionarHora(partes[0], 2);
+        paragrafo2.innerHTML = texto2;
+        texto2 = "Total a Pagar: " + campo.Preco*2 + "€";
+        paragrafo3.innerHTML = texto2;
+    }
+    
+}
 
 
 
-  
