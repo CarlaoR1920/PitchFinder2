@@ -113,7 +113,10 @@ function RegistarUtilizador(event) {
     let a = [];
     a = JSON.parse(localStorage.getItem("Utilizadores")) || [];
     const nome = document.querySelector("#nome");
+    const user = document.querySelector("#user");
     const email = document.querySelector("#email");
+    const nif = document.querySelector("#nif");
+    const tel = document.querySelector("#tel");
     const pass = document.querySelector("#pass");
     const passconf = document.querySelector("#passconf");
     let data = {};
@@ -121,18 +124,45 @@ function RegistarUtilizador(event) {
         alert('Por favor insira o seu nome.');
         return;
     }
-    var itemIndex = a.findIndex(item => item.Nome === nome.value);
+
+
+    if (user.value == null || user.value == "") {
+        alert('Por favor insira um username.');
+        return;
+    }
+    var itemIndex = a.findIndex(item => item.user === user.value);
 
     if (itemIndex !== -1) {
-        alert('Esse nome já pertence a outro utilizador.');
+        alert('Esse username já pertence a outro utilizador.');
         return;
     }
 
-    //let data2 = {};
+
+    if (nif.value == null || nif.value == "") {
+        alert('Por favor insira o seu NIF.');
+        return;
+    }
+    var itemIndex = a.findIndex(item => item.nif === nif.value);
+
+    if (itemIndex !== -1) {
+        alert('Já existe uma pessoa com esse NIF. Insira o seu por favor!!');
+        return;
+    }
+
+
+
+   // let data2 = {};
     if (email.value == null || email.value == "") {
         alert('Por favor insira o seu email.');
         return;
-    } else if (pass.value == null || pass.value == "") {
+    }
+
+    if (tel.value == null || tel.value == "") {
+        alert('Por favor insira o seu número de telemóvel.');
+        return;
+    }
+
+    if (pass.value == null || pass.value == "") {
         alert('Por favor insira a sua password.');
         return;
     } else if (passconf.value == null || passconf.value == "") {
@@ -144,13 +174,21 @@ function RegistarUtilizador(event) {
     } else {
 
         data["Nome"] = nome.value;
+        data["Username"] = user.value;
+        data["NIF"] = nif.value;
         data["Email"] = email.value;
+        data["Contacto"] = tel.value;
         data["Password"] = pass.value;
+        data["Imagem"] = "";
         data["Tipo"] = "Cliente"
         SaveDataToLocalStorageClientes(data);
         /*data2["Nome"] = "Admin";
+        data2["Username"] = "Admin";
+        data2["NIF"] = "123456789";
         data2["Email"] = "Admin@adm.com";
+        data2["Contacto"] = "123456789";
         data2["Password"] = "Admin";
+        data2["Imagem"] = "";
         data2["Tipo"] = "Admin"
         SaveDataToLocalStorageClientes(data2);*/
         alert('Registado com sucesso!');
@@ -167,10 +205,10 @@ function SaveDataToLocalStorageClientes(data) {
 }
 
 function Login(event) {
+
     event.preventDefault();
     const nome = document.querySelector("#nome");
     const pass = document.querySelector("#pass");
-    let data = {};
     if (nome.value == null || nome.value == "") {
         alert('Por favor insira o seu nome.');
         return;
@@ -181,7 +219,7 @@ function Login(event) {
     }
     let a = JSON.parse(localStorage.getItem("Utilizadores"))
 
-    var utilizador = a.findIndex(item => item.Nome === nome.value);
+    var utilizador = a.findIndex(item => item.Username === nome.value);
     if (utilizador !== -1) {
         if (a[utilizador].Password == pass.value) {
             sessionStorage.setItem("UtilizadorLigado", JSON.stringify(a[utilizador]))
@@ -236,6 +274,19 @@ const CamposDisponiveis = new Vue({
 
 });
 
+const nCampos = new Vue({
+    el: '#sobreNus',
+    data: {
+        nCampos: "",
+    },
+    mounted() {
+        const data = localStorage.getItem('Campos');
+        const dados = JSON.parse(data);
+        this.nCampos = dados.length;
+    },
+
+});
+
 const CampoaReservar = new Vue({
     el: '#tatudo',
     data: {
@@ -286,7 +337,7 @@ function confirmar(x) {
     const paragrafo3 = document.getElementById("DataModal3");
     const horario = document.getElementById("opt120");
     const campo = JSON.parse(sessionStorage.getItem("CampoEscolhido"))
-    if(campo ===  null){
+    if (campo === null) {
         alert("Volte a esolher um campo")
         window.location.href = "campos.html";
         return;
@@ -359,19 +410,141 @@ function tempo() {
     const campo = JSON.parse(sessionStorage.getItem("CampoEscolhido"))
 
     const partes = paragrafo2.innerHTML.split("-");
-    if(horario.value === "1"){
+    if (horario.value === "1") {
         let texto2 = partes[0] + "-" + adicionarHora(partes[0], 1);
         paragrafo2.innerHTML = texto2;
         texto2 = "Total a Pagar: " + campo.Preco + "€";
         paragrafo3.innerHTML = texto2;
-    }else{
+    } else {
         let texto2 = partes[0] + "-" + adicionarHora(partes[0], 2);
         paragrafo2.innerHTML = texto2;
-        texto2 = "Total a Pagar: " + campo.Preco*2 + "€";
+        texto2 = "Total a Pagar: " + campo.Preco * 2 + "€";
         paragrafo3.innerHTML = texto2;
     }
-    
+
 }
+
+function dados() {
+    if (sessionStorage.getItem("UtilizadorLigado") === null) {
+        document.getElementById("perfil12").remove();
+        document.getElementById("BackOffice").remove();
+    } else {
+        document.getElementById("login12").remove();
+    }
+    if (JSON.parse(sessionStorage.getItem("UtilizadorLigado")).Tipo === "Cliente") {
+        document.getElementById("BackOffice").remove();
+    }
+    const imagem = document.getElementById("quadrado-inserir-imagem5");
+    const nome = document.getElementById("nome");
+    const user = document.getElementById("user");
+    const NIF = document.getElementById("nif");
+    const email = document.getElementById("email");
+    const tel = document.getElementById("tel");
+    const Utilizador = JSON.parse(sessionStorage.getItem("UtilizadorLigado"));
+    console.log(Utilizador.Imagem)
+    imagem.style.backgroundImage = Utilizador.Imagem;
+    imagem.style.backgroundSize = 'cover';
+    imagem.style.backgroundPosition = 'center';
+    imagem.style.backgroundRepeat = 'no-repeat';
+
+    nome.value = Utilizador.Nome;
+    user.value = Utilizador.Username;
+    NIF.value = Utilizador.NIF;
+    email.value = Utilizador.Email;
+    tel.value = Utilizador.Contacto;
+
+
+}
+
+function editar() {
+
+    const nome = document.getElementById("nome");
+    const user = document.getElementById("user");
+    const email = document.getElementById("email");
+    const tel = document.getElementById("tel");
+    const butao = document.getElementById("botao_editar");
+    const inputImg = document.getElementById("input-inserir-imagem");
+
+    nome.disabled = false;
+    user.disabled = false;
+    email.disabled = false;
+    tel.disabled = false;
+    inputImg.style.display = "inline"
+    butao.innerHTML = "Guardar";
+    butao.onclick = Guardar
+
+}
+
+function Guardar() {
+    if (typeof localStorage !== 'undefined') {
+        const Utilizadores = JSON.parse(localStorage.getItem('Utilizadores'));
+        const userAtual = JSON.parse(sessionStorage.getItem('UtilizadorLigado'));
+        const foto = sessionStorage.getItem('Imagem');
+
+        const nome = document.getElementById("nome");
+        const user = document.getElementById("user");
+        const email = document.getElementById("email");
+        const tel = document.getElementById("tel");
+
+        var itemIndex = Utilizadores.findIndex(item => item.NIF === userAtual.NIF);
+
+        if (itemIndex !== -1) {
+            var itemIndex2 = Utilizadores.findIndex(item => item.user === user.value && item.NIF !== userAtual.NIF);
+
+            if (itemIndex2 !== -1) {
+                alert('Esse username já pertence a outro utilizador.');
+                return;
+            }
+            Utilizadores[itemIndex].Nome = nome.value
+            Utilizadores[itemIndex].Username = user.value
+            Utilizadores[itemIndex].Email = email.value
+            Utilizadores[itemIndex].Contacto = tel.value
+            
+            userAtual.Nome = nome.value
+            userAtual.Username = user.value
+            userAtual.Email = email.value
+            userAtual.Contacto = tel.value
+
+            if(!(foto === "" || foto === null)){
+                Utilizadores[itemIndex].Imagem = foto
+                userAtual.Imagem = foto
+            }
+            
+
+            localStorage.setItem('Utilizadores', JSON.stringify(Utilizadores));
+            sessionStorage.setItem('UtilizadorLigado', JSON.stringify(userAtual));
+
+
+            window.location.reload()
+
+            console.log('Os Dados foram alterados.');
+            alert("Alterações com sucesso.")
+        } else {
+            console.log('Os Dados não foram alterados.');
+        }
+    } else {
+        console.log('O LocalStorage não está disponível no navegador.');
+    }
+}
+
+
+function previewImagem(event) {
+    const input = event.target;
+    const quadrado = document.getElementById("quadrado-inserir-imagem5");
+    const imagem = input.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(imagem);
+    reader.onload = function () {
+        quadrado.style.backgroundImage = `url(${reader.result})`;
+        const estilo = quadrado.style.backgroundImage;
+        quadrado.style.backgroundSize = 'cover';
+        quadrado.style.backgroundPosition = 'center';
+        quadrado.style.backgroundRepeat = 'no-repeat';
+        sessionStorage.setItem("Imagem", estilo);
+    };
+}
+
+
 
 
 

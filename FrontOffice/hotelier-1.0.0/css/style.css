@@ -795,11 +795,26 @@ SS **********/
     align-items: center;
 }
   
-  
+#quadrado-inserir-imagem5{
+    width: 325px;
+    height: 325px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 70px ;
+    margin-top: 20px;
+    border-radius: 500px;
+}
+
 .image-container {
     margin-top: 55px;
 }
 
+#input-inserir-imagem{
+    margin-left: 170px ;
+    display: none;
+}
 
 #dibe{
     margin-left: 280px;
