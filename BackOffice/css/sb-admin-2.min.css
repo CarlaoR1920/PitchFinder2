@@ -12894,3 +12894,7 @@ thead {
 a{
     cursor: pointer;
 }
+
+#nif{
+    width: 300px;
+}
