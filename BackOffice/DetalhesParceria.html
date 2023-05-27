@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>PITCHFINDER ADMIN</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,7 +25,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -59,7 +61,7 @@
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="Reservas.html">
                     <i class="fas fa-calendar"></i>
                     <span>Reservas</span></a>
@@ -68,7 +70,7 @@
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="Campos.html">
-                    <i class="fa-regular  fa-futbol " ></i>
+                    <i class="fa-regular  fa-futbol "></i>
                     <span>Campos</span></a>
             </li>
 
@@ -78,7 +80,7 @@
                     <span>Profissionais</span></a>
             </li>
 
-            <li class="nav-item" id="PedidosParc">
+            <li class="nav-item active" id="PedidosParc">
                 <a class="nav-link" href="PedidosParceria.html">
                     <i class="fa-solid fa-handshake "></i>
                     <span>Pedidos Parceria</span></a>
@@ -154,7 +156,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Reservas</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Parcerias</h1>
                     </div>
 
                     <!-- Content Row -->
@@ -163,17 +165,17 @@
 
 
                         <!-- Campos Afiliados Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4" id="Card1">
+                        <div class="col-xl-3 col-md-6 mb-4 " id="Card3">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Reservas</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                                                Nº Pedidos</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            <i class="fa-solid fa-handshake fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -182,83 +184,61 @@
 
 
                         <!-- Lucro Anual Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4" id="Card2">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Por Aprovar</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fa-solid fa-check fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
 
 
                     <!-- Content Row -->
-                    <div class="row justify-content-start" id="muitacena">
-                        <div class="col-md-auto" id="imagem">
-                            <div id="quadrado-inserir-imagem_Reservas" :style="{
-                                'background-image': item2.Imagem,
-                                'background-size': 'cover',
-                                'background-position': 'center',
-                                'background-repeat': 'no-repeat',
-                            }">
-                            </div>
-                            <label class="labels1" id="labelNaturalidade">{{item2.Nome}}</label>
-
-
-                        </div>
+                    <div class="row justify-content-center" id="muitacena2">
                         <div class="col-md-auto">
                             <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Localização: {{item2.Localizacao}}</label>
+                                <label class="labels1" id="labelNaturalidade">Campo: {{item.nome_campo}}</label>
                             </div>
                             <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Balnearios: {{item2.Balnearios}}</label>
+                                <label class="labels1" id="labelNaturalidade">Localização: {{item.localizacao_campo}}</label>
                             </div>
                             <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Outros: {{item2.Outros}}</label>
+                                <label class="labels1" id="labelNaturalidade">Piso: {{item.piso}}</label>
                             </div>
                             <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Cliente: {{item.Username}}</label>
+                                <label class="labels1" id="labelNaturalidade">Preço: {{item.preco_campo}}€</label>
+                            </div>
+                            <div class="row justify-content-start">
+                                <label class="labels1" id="labelNaturalidade">Bola: {{item.bola}}</label>
+                            </div>
+                            <div class="row justify-content-start">
+                                <label class="labels1" id="labelNaturalidade">Coletes: {{item.coletes}}</label>
                             </div>
                         </div>
                         <div class="col-md-auto" id="ReservalCol2">
                             <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Data: {{item.data}}</label>
+                                <label class="labels1" id="labelNaturalidade">Nome: {{item.nome_proprietario}}</label>
                             </div>
                             <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Horario: {{item.horario}}</label>
+                                <label class="labels1" id="labelNaturalidade">Email: {{item.email_proprietario}}</label>
                             </div>
                             <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Custo:{{item.Valor}}</label>
+                                <label class="labels1" id="labelNaturalidade">Contacto:{{item.contacto_proprietario}}</label>
                             </div>
                             <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Profissional:</label>
-                                <select id="SelectPros" class="inputsPro" name="Profissional">
-                                    <option v-for="item in items" :value=item.NIF>{{item.Nome}}</option>
-                                </select>
+                                <label class="labels1" id="labelNaturalidade">NIF:{{item.nif_proprietario}}</label>
+                            </div>
+                            <div class="row justify-content-start">
+                                <label class="labels1" id="labelNaturalidade">Data de Nascimento:{{item.data_nasc_proprietario}}</label>
+                            </div>
+                            <div class="row justify-content-start">
+                                <label class="labels1" id="labelNaturalidade">Balnearios:{{item.n_balnearios}}</label>
                             </div>
 
                         </div>
                     </div>
-                    <div class="row justify-content-start" id="ConfReserva">
+                    <div class="row justify-content-between" id="ConfReserva">
                         <td>
-                            <button onclick="Marcar(1)" id="butaoAceitar2">Aceitar</button>
-                            <button onclick="Marcar(0)" id="butaoRecusar2">Recusar</button>
+                            <button onclick="Marcar(1)" id="butaoAceitar2" style="visibility:hidden;">Aceitar</button>
+                            <button onclick="AceitarParceria(true)" id="butaoAceitar2">Aceitar</button>
+                            <button onclick="AceitarParceria(false)" id="butaoRecusar2">Recusar</button>
+                            <button onclick="Marcar(1)" id="butaoAceitar2" style="visibility:hidden;">Aceitar</button>
                         </td>
-
-                    </div>
-                    <div class="row justify-content-center" id="ConfReserva">
-                            <button class="btn btn-primary btn-lg" id="btnRelatorio">Preencher Relatorio</button>
-
 
                     </div>
                 </div>

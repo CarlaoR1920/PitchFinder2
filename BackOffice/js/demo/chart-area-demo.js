@@ -2,33 +2,22 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
-function number_format(number, decimals, dec_point, thousands_sep) {
-  // *     example: number_format(1234.56, 2, ',', ' ');
-  // *     return: '1 234,56'
-  number = (number + '').replace(',', '').replace(' ', '');
-  var n = !isFinite(+number) ? 0 : +number,
-    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-    s = '',
-    toFixedFix = function(n, prec) {
-      var k = Math.pow(10, prec);
-      return '' + Math.round(n * k) / k;
-    };
-  // Fix for IE parseFloat(0.55).toFixed(0) = 0;
-  s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
-  if (s[0].length > 3) {
-    s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
-  }
-  if ((s[1] || '').length < prec) {
-    s[1] = s[1] || '';
-    s[1] += new Array(prec - s[1].length + 1).join('0');
-  }
-  return s.join(dec);
+
+let a = [10, 25, 100, 60, 75, 105, 150, 165, 170, 160, 200, 250]
+const data = JSON.parse(localStorage.getItem('Pagamentos'));
+a=calcularSomaMeses(data,getAnoAtual())
+
+function getAnoAtual() {
+  const dataAtual = new Date();
+  const ano = dataAtual.getFullYear();
+  return ano;
 }
 
-// Area Chart Example
-var ctx = document.getElementById("myAreaChart");
+function anoSelecionado(){
+  let selectAno = document.getElementById("ano");
+  a=calcularSomaMeses2(data,Number(selectAno.value))
+  console.log(a)
+  var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
@@ -46,7 +35,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [10, 25, 100, 60, 75, 105, 150, 165, 170, 160, 200, 250],
+      data: a,
     }],
   },
   options: {
@@ -76,10 +65,10 @@ var myLineChart = new Chart(ctx, {
         ticks: {
           maxTicksLimit: 5,
           padding: 10,
-         /* // Include a dollar sign in the ticks
-          callback: function(value, index, values) {
-            return '$' + number_format(value);
-          }*/
+          /* // Include a dollar sign in the ticks
+           callback: function(value, index, values) {
+             return '$' + number_format(value);
+           }*/
         },
         gridLines: {
           color: "rgb(234, 236, 244)",
@@ -108,7 +97,188 @@ var myLineChart = new Chart(ctx, {
       mode: 'index',
       caretPadding: 10,
       callbacks: {
-        label: function(tooltipItem, chart) {
+        label: function (tooltipItem, chart) {
+          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+        }
+      }
+    }
+  }
+});
+
+ 
+}
+
+function number_format(number, decimals, dec_point, thousands_sep) {
+  // *     example: number_format(1234.56, 2, ',', ' ');
+  // *     return: '1 234,56'
+  number = (number + '').replace(',', '').replace(' ', '');
+  var n = !isFinite(+number) ? 0 : +number,
+    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+    s = '',
+    toFixedFix = function (n, prec) {
+      var k = Math.pow(10, prec);
+      return '' + Math.round(n * k) / k;
+    };
+  // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+  s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+  if (s[0].length > 3) {
+    s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+  }
+  if ((s[1] || '').length < prec) {
+    s[1] = s[1] || '';
+    s[1] += new Array(prec - s[1].length + 1).join('0');
+  }
+  return s.join(dec);
+}
+
+function calcularSomaMeses2(dados, ano) {
+  // Criar um array com os valores iniciais para todos os meses do ano
+  let somaMeses = Array(12).fill(0);
+  // Iterar sobre os dados
+  dados.forEach(dado => {
+    // Extrair a data do dado
+    let data = new Date(dado.Data);
+
+    // Verificar se o ano corresponde ao ano fornecido
+    if (data.getFullYear() === ano) {
+      // Extrair o valor do dado
+      let valor = parseFloat(dado.Valor);
+
+      // Extrair o mês da data
+      let mes = data.getMonth();
+
+      // Adicionar o valor ao mês correspondente
+      somaMeses[mes] += valor;
+    }
+  });
+
+  return somaMeses;
+}
+
+function calcularSomaMeses(dados, ano) {
+  let selectAno = document.getElementById("ano");
+  let anos = [];
+  // Criar um array com os valores iniciais para todos os meses do ano
+  let somaMeses = Array(12).fill(0);
+
+  dados.forEach(dado => {
+    let ano = new Date(dado.Data).getFullYear();
+    if (!anos.includes(ano)) {
+      anos.push(ano);
+    }
+  });
+  anos.forEach(ano => {
+    let option = document.createElement("option");
+    option.value = ano;
+    option.textContent = ano;
+    selectAno.appendChild(option);
+  });
+  // Iterar sobre os dados
+  dados.forEach(dado => {
+    // Extrair a data do dado
+    let data = new Date(dado.Data);
+
+    // Verificar se o ano corresponde ao ano fornecido
+    if (data.getFullYear() === ano) {
+      // Extrair o valor do dado
+      let valor = parseFloat(dado.Valor);
+
+      // Extrair o mês da data
+      let mes = data.getMonth();
+
+      // Adicionar o valor ao mês correspondente
+      somaMeses[mes] += valor;
+    }
+  });
+
+  return somaMeses;
+}
+
+// Area Chart Example
+var ctx = document.getElementById("myAreaChart");
+var myLineChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    datasets: [{
+      label: "Earnings",
+      lineTension: 0.3,
+      backgroundColor: "rgba(78, 115, 223, 0.05)",
+      borderColor: "rgba(78, 115, 223, 1)",
+      pointRadius: 3,
+      pointBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointBorderColor: "rgba(78, 115, 223, 1)",
+      pointHoverRadius: 3,
+      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+      pointHitRadius: 10,
+      pointBorderWidth: 2,
+      data: a,
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+      }
+    },
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'date'
+        },
+        gridLines: {
+          display: false,
+          drawBorder: false
+        },
+        ticks: {
+          maxTicksLimit: 7
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          maxTicksLimit: 5,
+          padding: 10,
+          /* // Include a dollar sign in the ticks
+           callback: function(value, index, values) {
+             return '$' + number_format(value);
+           }*/
+        },
+        gridLines: {
+          color: "rgb(234, 236, 244)",
+          zeroLineColor: "rgb(234, 236, 244)",
+          drawBorder: false,
+          borderDash: [2],
+          zeroLineBorderDash: [2]
+        }
+      }],
+    },
+    legend: {
+      display: false
+    },
+    tooltips: {
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      titleMarginBottom: 10,
+      titleFontColor: '#6e707e',
+      titleFontSize: 14,
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      intersect: false,
+      mode: 'index',
+      caretPadding: 10,
+      callbacks: {
+        label: function (tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
           return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
         }

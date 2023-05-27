@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>PITCHFINDER ADMIN</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -195,9 +195,9 @@
                             <input type="file" id="input-inserir-imagem" accept="image/*"
                                 onchange="previewImagem(event)">
                             <div id="quadrado-inserir-imagem">
-                                <label id="labelImagem" for="input-inserir-imagem">Inserir imagem</label>
+                                <label id="labelImagem" for="input-inserir-imagem"></label>
                             </div>
-                            <input type="text" id="input-fundo" name="Nome" class="inputs" placeholder="Insira o nome"
+                            <input type="text" id="input-fundo" name="Nome" :value=Nome class="inputs" placeholder="Insira o nome"
                                 onfocus="this.placeholder = 'Insira o nome'"
                                 oninput="if (this.value !== '') this.placeholder = ''">
 
