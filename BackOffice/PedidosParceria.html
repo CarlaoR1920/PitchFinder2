@@ -79,7 +79,7 @@
                     <span>Profissionais</span></a>
             </li>
 
-            <li class="nav-item" id="PedidosParc">
+            <li class="nav-item active" id="PedidosParc">
                 <a class="nav-link" href="PedidosParceria.html">
                     <i class="fa-solid fa-handshake "></i>
                     <span>Pedidos Parceria</span></a>
@@ -186,20 +186,23 @@
 
 
 
-                        <div class="table-responsive" id="tabelaCampos">
+                        <div class="table-responsive" id="TabelaParcerias">
                             <table class="table table-borderless" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>Campo</th>
-                                        <th>Localização</th>
-                                        <th></th>
+                                        <th>Proprietário</th>
+                                        <th>Contacto</th>
+                                        <th>Preço(€/h)</th>
                                     </tr>
                                 </thead>
-                                <tbody id="TabelaCampos">
+                                <tbody id="TabelaParcerias">
                                     <tr v-for="item in items" >
-                                        <td><a v-on:click="verCampo(item)">{{ item.Data }}</a></td>
-                                        <td>{{ item.Valor }}</td>
-                                        <td>{{ item.Envolvido }}</td>
+                                        <td><a v-on:click="verParceria(item)">{{item.nome_campo}}</a></td>
+                                        <td>{{item.nome_proprietario}}</td>
+                                        <td>{{item.localizacao_campo}}</td>
+                                        <td>{{item.contacto_proprietario}}</td>
+                                        <td>{{item.preco_campo}}</td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -137,42 +137,42 @@
         <div class="box-form">
             <div class="right">
                 <br><br>
-                <form onsubmit="parceria()">
+                <form onsubmit="parceria(event)">
                     <h2>Dados do Campo</h2>
-                    <input type="text" id="nome-campo" name="candidato" placeholder="Nome do Campo de 5" required>
-                    <input type="text" id="localizacao" name="candidato" placeholder="Localização" required>
-                    <input type="number" id="balnearios" name="candidato" placeholder="Nº de balneários" required>
-                    <input type="number" id="preco" name="candidato" placeholder="Preço por Hora" required>
+                    <input type="text" id="nome_campo" name="candidato" placeholder="Nome do Campo de 5" required>
+                    <input type="text" id="localizacao_campo" name="candidato" placeholder="Localização" required>
+                    <input type="number" id="n_balnearios" name="candidato" placeholder="Nº de balneários" required>
+                    <input type="number" id="preco_campo" name="candidato" placeholder="Preço por Hora" required>
                     <br><br>
                     <p style="color: #6d6d6f;">[Selecione o piso do campo]</p>
-                    <select id="relvado" name="relvado" required>
-                        <option>Selecione uma opção</option>
+                    <select id="piso" name="candidato" required>
+                        <option value="Selecione uma opção">Selecione uma opção</option>
                         <option value="Natural">Natural</option>
                         <option value="Sintetico">Sintético</option>
                         <option value="Pavilhao">Pavilhão</option>
                     </select>
                     <br>
                     <p style="color: #6d6d6f;"></p>[Selecione uma opção quanto há existencia de bola]</p>
-                    <select id="bola" name="bola" required>
-                        <option>Selecione uma opção</option>
+                    <select id="bola" name="candidato" required>
+                        <option id="Selecione uma opção">Selecione uma opção</option>
                         <option value="Sim">Sim</option>
                         <option value="Nao">Não</option>
                     </select>
                     <br>
                     <p style="color: #6d6d6f;"></p>[Selecione uma opção quanto há existencia de coletes]</p>
-                    <select id="coletes" name="coletes" required>
-                        <option>Selecione uma opção</option>
+                    <select id="coletes" name="candidato" required>
+                        <option id="Selecione uma opção">Selecione uma opção</option>
                         <option value="Sim">Sim</option>
                         <option value="Nao">Não</option>
                     </select>
                     <br><br><br>
                     <h2>Dados do Proprietário</h2>
-                    <input type="text" id="nome_proprietário" name="candidato" placeholder="Nome do proprietário" required>
-                    <input type="text" id="naturalidade_proprietário" name="candidato" placeholder="Naturalidade" required>
-                    <input type="date" id="data-nascimento_proprietário" name="candidato" required>
-                    <input type="email" id="email_proprietário" name="candidato" placeholder="Email" required>
-                    <input type="tel" id="contacto_proprietário" name="candidato" placeholder="Contacto" required>
-                    <input type="text" id="nif_proprietário" name="candidato" placeholder="NIF" required>
+                    <input type="text" id="nome_proprietario" name="candidato" placeholder="Nome do proprietário" required>
+                    <input type="text" id="naturalidade_proprietario" name="candidato" placeholder="Naturalidade" required>
+                    <input type="date" id="data_nasc_proprietario" name="candidato" required>
+                    <input type="email" id="email_proprietario" name="candidato" placeholder="Email" required>
+                    <input type="tel" id="contacto_proprietario" name="candidato" placeholder="Contacto" required>
+                    <input type="text" id="nif_proprietario" name="candidato" placeholder="NIF" required>
                     <input type="submit" value="Enviar" class="corverdeebranco">
                 </form>
             </div>

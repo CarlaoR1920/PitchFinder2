@@ -595,6 +595,7 @@ function AceitarPagamento(){
     data2["data"] = data1;
     data2["Campo"] = campo.Nome;
     data2["Profissional"] = "";
+    data2["ProfissionalNIF"] = "";
     data2["Estado"] = "Pendente";
     data2["Username"] = user.Username;
     data2["horario"] = paragrafo2.innerHTML;
@@ -613,7 +614,7 @@ function AceitarPagamento(){
     localStorage.setItem("Pagamentos", JSON.stringify(c))
     localStorage.setItem("Reservas", JSON.stringify(b))
     
-    //window.location.href = "index.html"
+    window.location.href = "index.html"
 }
 
 function SaveDataToLocalStorageProfissionais(data) {
@@ -662,9 +663,43 @@ function confirmar(x) {
     paragrafo3.innerHTML = texto;
 }
 
-function parceria()
-{
-    console.log(1);
+function parceria(event)
+{   
+    event.preventDefault();
+    const piso = document.querySelector("#piso");
+    const bola = document.querySelector("#bola");
+    const coletes = document.querySelector("#coletes");
+  
+    if(piso.value=="Selecione uma opção"){
+        alert("Preencha todos os campos associados. Selecione o piso do campo, por favor!")
+        return
+    }
+    if(bola.value=="Selecione uma opção"){
+        alert("Preencha todos os campos associados. Selecione a disponibilidade da bola, por favor!")
+        return
+    }
+    if(coletes.value=="Selecione uma opção"){
+        alert("Preencha todos os campos associados. Selecione a disponibilidade dos coletes, por favor!")
+        return
+    }
+
+    var candidato = document.getElementsByName("candidato");
+    var data = {}
+    const parcerias = JSON.parse(localStorage.getItem("Parcerias")) || []
+
+    for(let i=0; i<candidato.length;i++)
+    {
+        data[candidato[i].id] = candidato[i].value;
+    }
+    
+    parcerias.push(data);
+    localStorage.setItem("Parcerias",JSON.stringify(parcerias));
+    alert("Candidatura realizada com sucesso. Obrigado.")
+    window.location.reload();
+    
+    
 }
+   
+
 
 
