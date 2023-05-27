@@ -204,37 +204,37 @@
 
 
                     <!-- Content Row -->
-                    <div class="row justify-content-start">
+                    <div class="row justify-content-start" id="muitacena">
                         <div class="col-md-auto" id="imagem">
                             <div id="quadrado-inserir-imagem_Reservas">
                             </div>
-                            <label class="labels1" id="labelNaturalidade">PlayGreen</label>
+                            <label class="labels1" id="labelNaturalidade">{{item2.Nome}}</label>
 
 
                         </div>
                         <div class="col-md-auto">
                             <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Localização: Vila Verde</label>
+                                <label class="labels1" id="labelNaturalidade">Localização: {{item2.Localizacao}}</label>
                             </div>
                             <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Balnearios: 2</label>
+                                <label class="labels1" id="labelNaturalidade">Balnearios: {{item2.Balnearios}}</label>
                             </div>
                             <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Outros: WI-FI</label>
+                                <label class="labels1" id="labelNaturalidade">Outros: {{item2.Outros}}</label>
                             </div>
                             <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Cliente: David Esteves</label>
+                                <label class="labels1" id="labelNaturalidade">Cliente: {{item.Username}}</label>
                             </div>
                         </div>
                         <div class="col-md-auto" id="ReservalCol2">
                             <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Data: 27-05-2023</label>
+                                <label class="labels1" id="labelNaturalidade">Data: {{item.data}}</label>
                             </div>
                             <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Horario: 17:00 - 18:00</label>
+                                <label class="labels1" id="labelNaturalidade">Horario: {{item.horario}}</label>
                             </div>
                             <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Custo:70€</label>
+                                <label class="labels1" id="labelNaturalidade">Custo:{{item.Valor}}</label>
                             </div>
                             <div class="row justify-content-start">
                                 <label class="labels1" id="labelNaturalidade">Profissional:</label>

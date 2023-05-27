@@ -25,7 +25,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -68,7 +70,7 @@
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="Campos.html">
-                    <i class="fa-regular  fa-futbol " ></i>
+                    <i class="fa-regular  fa-futbol "></i>
                     <span>Campos</span></a>
             </li>
 
@@ -205,9 +207,7 @@
                         <!-- DataTales Example -->
 
 
-
-
-                        <div class="table-responsive">
+                        <div class="table-responsive" id="tabelaReservas">
                             <table class="table table-borderless" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
@@ -218,23 +218,18 @@
 
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><a href="DetalhesReservas.html">27-05-2023 14:30</a></td>
-                                        <td>PlayGreen</td>
-                                        <td><select>
-                                                <option value="joao_lomba">João Lomba</option>
-                                                <option value="david_esteves">David Esteves</option>
-                                            </select></td>
-                                        <td><button id="butaoAceitar">Aceitar</button>
-                                            <button id="butaoRecusar">Recusar</button>
-                                        </td>
-
+                                <tbody id="tabelaReservas">
+                                    <tr v-for="item in items">
+                                        <td><a v-on:click="verReserva(item)">{{item.data}}</a></td>
+                                        <td>{{item.Campo }}</td>
+                                        <td>{{item.Profissional }}</td>
+                                        <td>{{item.Estado}}</td>
+                                        
                                     </tr>
-
                                 </tbody>
                             </table>
                         </div>
+
 
 
 

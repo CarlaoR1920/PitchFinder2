@@ -564,8 +564,6 @@ function AceitarPagamento(){
     const Multibanco = document.getElementById("mult");
     const data1 = document.getElementById("data").value;
     const valorApagar = document.getElementById("val").value;
-    let Pagamentos = JSON.parse(localStorage.getItem("Pagamentos"));
-    let Reservas = JSON.parse(localStorage.getItem("Reservas"));
     const campo = JSON.parse(sessionStorage.getItem("CampoEscolhido"));
     const user = JSON.parse(sessionStorage.getItem("UtilizadorLigado"));
     console.log(JSON.parse(localStorage.getItem("Reservas")))
@@ -591,6 +589,7 @@ function AceitarPagamento(){
     if (Multibanco.checked) {
         pagamento = "MULTIBANCO"
     }
+    console.log(paragrafo2.value)
 
     data2["IdReserva"] = a;
     data2["data"] = data1;
@@ -598,13 +597,15 @@ function AceitarPagamento(){
     data2["Profissional"] = "";
     data2["Estado"] = "Pendente";
     data2["Username"] = user.Username;
-    data2["horario"] = paragrafo2.value;
+    data2["horario"] = paragrafo2.innerHTML;
+    data2["Valor"] = valorApagar;
 
     data["Valor"] = valorApagar;
     data["NIF"] = user.NIF;
     data["MetodoPagamento"] = pagamento;
     data["Campo"] = campo.Nome;
     data["IdReserva"] = a;
+    data["Data"] = data1;
     
     c.push(data) 
     b.push(data2)
@@ -612,7 +613,7 @@ function AceitarPagamento(){
     localStorage.setItem("Pagamentos", JSON.stringify(c))
     localStorage.setItem("Reservas", JSON.stringify(b))
     
-    window.location.href = "index.html"
+    //window.location.href = "index.html"
 }
 
 function SaveDataToLocalStorageProfissionais(data) {
