@@ -330,49 +330,14 @@ function adicionarHora(hora, tempo) {
 }
 
 
-function confirmar(x) {
-    const data1 = document.getElementById("data").value;
-    const paragrafo1 = document.getElementById("DataModal");
-    const paragrafo2 = document.getElementById("DataModal2");
-    const paragrafo3 = document.getElementById("DataModal3");
-    const horario = document.getElementById("opt120");
-    const campo = JSON.parse(sessionStorage.getItem("CampoEscolhido"))
-    if (campo === null) {
-        alert("Volte a esolher um campo")
-        window.location.href = "campos.html";
-        return;
-    }
-    const data = new Date(data1);
-    if (data1 === "") {
-        alert("Insira uma Data")
-        return;
-    }
 
-    if (x === "00:00") {
-        horario.style.display = "none";
-    } else {
-        horario.style.display = "inline";
-    }
-
-
-    const nomeMes = obterNomeMes(data);
-    const diaSemana = obterDiaDaSemana(data);
-
-    document.getElementById('modal123').style.display = 'block';
-    document.getElementById('overlay123').style.display = 'block';
-    let texto = diaSemana + ", " + data.getDate() + " de " + nomeMes + " de " + data.getFullYear();
-    paragrafo1.innerHTML = texto;
-    texto = x + "-" + adicionarHora(x, 1);
-    paragrafo2.innerHTML = texto;
-    paragrafo3.style.fontWeight = "bold"
-    texto = "Total a Pagar: " + campo.Preco + "€";
-    paragrafo3.innerHTML = texto;
-}
 
 function fecharconf() {
     const horario = document.getElementById("tempo2");
     horario.value = 1;
     document.getElementById('modal123').style.display = 'none';
+    document.getElementById('modal1234').style.display = 'none';
+    document.getElementById('modal12345').style.display = 'none';
     document.getElementById('overlay123').style.display = 'none';
 }
 
@@ -544,7 +509,161 @@ function previewImagem(event) {
     };
 }
 
+function generateRandomNumber() {
+    var randomNumber = Math.floor(Math.random() * 1000000000); // Gera um número aleatório de 0 a 999999999
+  
+    var numberString = randomNumber.toString().padStart(9, '0');
+  
+
+    var formattedNumber = numberString.replace(/(\d{3})(?=\d)/g, '$1 ');
+  
+    return formattedNumber;
+}
+
+function confirmarPagamento(){
+    const Mbway = document.getElementById("mbway");
+    const Multibanco = document.getElementById("mult");
+    const termos = document.getElementById("termos");
+    if(!termos.checked){
+        alert("É necessario aceitar os Termos de Serviço")
+        return
+    }
+    
+   
+    
+    if (Mbway.checked) {
+        document.getElementById('modal123').style.display = 'none';
+        document.getElementById('modal1234').style.display = 'block';
+        const valorApagar = document.getElementById("DataModal4");
+        const paragrafo3 = document.getElementById("DataModal3");
+        valorApagar.innerHTML = paragrafo3.innerHTML
+    }else
+    if (Multibanco.checked) {
+        document.getElementById('modal123').style.display = 'none';
+        document.getElementById('modal12345').style.display = 'block';
+        const valorApagar = document.getElementById("val");
+        const paragrafo3 = document.getElementById("DataModal3");
+        const paragrafo1 = document.getElementById("ref");
+        paragrafo1.value = generateRandomNumber();
+        const partes = paragrafo3.innerHTML.split(':');
+        valorApagar.value = partes[1]
+    }else{
+        alert("Escolha um metodo de pagamento")
+    }
+
+    
+}
+
+function AceitarPagamento(){
+    let b = [];
+    b = JSON.parse(localStorage.getItem("Reservas")) || [];
+    let c = [];
+    c = JSON.parse(localStorage.getItem("Pagamentos")) || [];
+    const paragrafo2 = document.getElementById("DataModal2");
+    const Mbway = document.getElementById("mbway");
+    const Multibanco = document.getElementById("mult");
+    const data1 = document.getElementById("data").value;
+    const valorApagar = document.getElementById("val").value;
+    let Pagamentos = JSON.parse(localStorage.getItem("Pagamentos"));
+    let Reservas = JSON.parse(localStorage.getItem("Reservas"));
+    const campo = JSON.parse(sessionStorage.getItem("CampoEscolhido"));
+    const user = JSON.parse(sessionStorage.getItem("UtilizadorLigado"));
+    console.log(JSON.parse(localStorage.getItem("Reservas")))
+    if(user === ""){
+        alert("Precisa de uma conta para confirmar o pagamento")
+    }
+    let data = {}
+    let data2 = {}
+    let pagamento = ""
+    let x = true;
+    let a = 0;
+    while(x){
+        a=generateRandomNumber();
+        var itemIndex = b.findIndex(item => item.IdReserva === a);
+        if(itemIndex === -1){
+            x = false;
+        }
+    }
+
+    if (Mbway.checked) {
+        pagamento = "MBWAY"
+    }else
+    if (Multibanco.checked) {
+        pagamento = "MULTIBANCO"
+    }
+
+    data2["IdReserva"] = a;
+    data2["data"] = data1;
+    data2["Campo"] = campo.Nome;
+    data2["Profissional"] = "";
+    data2["Estado"] = "Pendente";
+    data2["Username"] = user.Username;
+    data2["horario"] = paragrafo2.value;
+
+    data["Valor"] = valorApagar;
+    data["NIF"] = user.NIF;
+    data["MetodoPagamento"] = pagamento;
+    data["Campo"] = campo.Nome;
+    data["IdReserva"] = a;
+    
+    c.push(data) 
+    b.push(data2)
+
+    localStorage.setItem("Pagamentos", JSON.stringify(c))
+    localStorage.setItem("Reservas", JSON.stringify(b))
+    
+    window.location.href = "index.html"
+}
+
+function SaveDataToLocalStorageProfissionais(data) {
+    let a = [];
+    a = JSON.parse(localStorage.getItem("Profissionais")) || [];
+    a.push(data);
+    localStorage.setItem("Profissionais", JSON.stringify(a));
+  }
+
+function confirmar(x) {
+    const data1 = document.getElementById("data").value;
+    const paragrafo1 = document.getElementById("DataModal");
+    const paragrafo2 = document.getElementById("DataModal2");
+    const paragrafo3 = document.getElementById("DataModal3");
+    const horario = document.getElementById("opt120");
+    const campo = JSON.parse(sessionStorage.getItem("CampoEscolhido"))
+    if (campo === null) {
+        alert("Volte a esolher um campo")
+        window.location.href = "campos.html";
+        return;
+    }
+    const data = new Date(data1);
+    if (data1 === "") {
+        alert("Insira uma Data")
+        return;
+    }
+
+    if (x === "00:00") {
+        horario.style.display = "none";
+    } else {
+        horario.style.display = "inline";
+    }
 
 
+    const nomeMes = obterNomeMes(data);
+    const diaSemana = obterDiaDaSemana(data);
+
+    document.getElementById('modal123').style.display = 'block';
+    document.getElementById('overlay123').style.display = 'block';
+    let texto = diaSemana + ", " + data.getDate() + " de " + nomeMes + " de " + data.getFullYear();
+    paragrafo1.innerHTML = texto;
+    texto = x + "-" + adicionarHora(x, 1);
+    paragrafo2.innerHTML = texto;
+    paragrafo3.style.fontWeight = "bold"
+    texto = "Total a Pagar: " + campo.Preco + "€";
+    paragrafo3.innerHTML = texto;
+}
+
+function parceria()
+{
+    console.log(1);
+}
 
 

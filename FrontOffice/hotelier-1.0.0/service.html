@@ -34,7 +34,9 @@
     <link href="css/style.css" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -72,11 +74,11 @@
                         </div>
                         <div class="col-lg-5 px-5 text-end">
                             <div class="d-inline-flex align-items-center py-2">
-                                <a class="me-3" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="me-3" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="me-3" href=""><i class="fab fa-linkedin-in"></i></a>
-                                <a class="me-3" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="" href=""><i class="fab fa-youtube"></i></a>
+                                <a class="me-3" href=""><i class="corverde fab fa-facebook-f"></i></a>
+                                <a class="me-3" href=""><i class="corverde fab fa-twitter"></i></a>
+                                <a class="me-3" href=""><i class="corverde fab fa-linkedin-in"></i></a>
+                                <a class="me-3" href=""><i class="corverde fab fa-instagram"></i></a>
+                                <a class="" href=""><i class="corverde fab fa-youtube"></i></a>
                             </div>
                         </div>
                     </div>
@@ -93,11 +95,15 @@
                                 <a href="" class="corverde nav-item nav-link active">Reservas</a>
                                 <a href="" class="nav-item nav-link">Descrição</a>
                             </div>
-                           
+
                             <div class="navbar-nav mr-auto py-0">
-                                <a id="login12" href="Login.html" class="perfiluser corverdeebranco btn rounded-0 py-4 px-md-5 d-none d-lg-block">LOGIN<i class="fas fa-arrow-right ms-3"></i></a>
-                            <a id="perfil12" href="perfil.html" class="corbranco nav-item nav-link"><i class="fa-solid fa-user fa-lg" style="color: #ffffff; margin-right: 15px;"></i>PERFIL</a>
-                        
+                                <a id="login12" href="Login.html"
+                                    class="perfiluser corverdeebranco btn rounded-0 py-4 px-md-5 d-none d-lg-block">LOGIN<i
+                                        class="fas fa-arrow-right ms-3"></i></a>
+                                <a id="perfil12" href="perfil.html" class="corbranco nav-item nav-link"><i
+                                        class="fa-solid fa-user fa-lg"
+                                        style="color: #ffffff; margin-right: 15px;"></i>PERFIL</a>
+
                             </div>
                         </div>
                     </nav>
@@ -108,7 +114,7 @@
 
 
         <!-- Page Header Start -->
-        <div class="container-fluid page-header mb-5 p-0" style="background-image: url(img/carousel-1.jpg);">
+        <div class="container-fluid page-header mb-5 p-0" style="background-image: url(img/campo1.jpg);">
             <div class="container-fluid page-header-inner py-5">
                 <div class="container text-center pb-5">
                     <h1 class="display-3 text-white mb-3 animated slideInDown"></h1>
@@ -157,9 +163,6 @@
                                         placeholder="Data" data-target="#date2" />
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <button class="btn corverdeebranco w-100">Submeter</button>
                         </div>
                     </div>
                 </div>
@@ -231,7 +234,8 @@
                                     <div class="modal-content">
                                         <div class="modal-header"> <!-- Modal Header -->
                                             <h4 class="modal-title">Confirmar Reserva</h4>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                onclick="fecharconf()"></button>
                                         </div> <!-- Modal body -->
                                         <div class="modal-body">
                                             <p id="DataModal"></p>
@@ -244,96 +248,177 @@
                                             </select>
                                             <br>
                                             <br>
-                                            <div id="dibe" class="row">
-                                                <p id="DataModal3"> fawafwa</p>
+
+                                            <div>
+                                                <h6>Método de pagamento</h6>
+                                                <form>
+                                                    <img id="img123" width="40px" height="40px"
+                                                        src="https://betclick.hs.llnwd.net/dam/betclic/payment/logos/ssr/mbway_logo.svg"><span
+                                                        id="spanWay">MB WAY</span><input id="mbway" type="radio"
+                                                        name="mbway" value="mbway" selected><br>
+                                                    <img width="40px" height="40px"
+                                                        src="https://betclick.hs.llnwd.net/dam/betclic/payment/logos/ssr/multibanco_logo.svg"><span
+                                                        id="mbanco">Multibanco</span><input id="mult" type="radio"
+                                                        name="mbway" value="multibanco"><br><br>
+                                                </form>
+
+                                            </div>
+                                            <input id="termos" type="checkbox" name="termos"> <span id="li">Li e aceito
+                                                os <a target="_blank" href="Termos.html">Termos de Serviço</a></span>
+
+                                            <div id="dibe">
+                                                <p id="DataModal3"></p>
                                             </div>
 
 
                                         </div> <!-- Modal footer -->
+
                                         <div class="modal-footer">
-                                            <button onclick="fecharconf()" type="button" class="btn corverdeebranco"
-                                                data-bs-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn corverdeebranco"
-                                                data-bs-dismiss="modal">Confirmar</button>
+                                            <button onclick="confirmarPagamento()"  
+                                                class="btn corverdeebranco">Continuar</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!--Modal MBWAY START-->
+
+                            <div id="modal1234" style="display: none;">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header"> <!-- Modal Header -->
+                                            <h4 id="Titulo" class="modal-title">MB WAY</h4>
+
+
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                onclick="fecharconf()"></button>
+                                        </div> <!-- Modal body -->
+                                        <form>
+                                            <h6>Insere o teu número de telemóvel e confirma o pagamento na app MB WAY
+                                            </h6><br>
+                                            <input style="margin-left: 10px;" type="tel" id="mbtel"
+                                                placeholder=" Nº telemóvel">
+                                        </form><br>
+                                        <div id="dibe" class="row">
+                                            <p id="DataModal4"></p>
+                                        </div>
+
+
+
+
+
+                                    </div> <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button onclick="AceitarPagamento()"
+                                            class="btn corverdeebranco">Continuar</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                                            <!--Modal MBWAY END-->
+
+                            <div id="modal12345" style="display: none;">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header"> <!-- Modal Header -->
+                                            <h4 id="Titulo" class="modal-title">Multibanco</h4>
+
+
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                onclick="fecharconf()"></button>
+                                        </div> <!-- Modal body -->
+                                        <h6 class="titpag">Entidade</h6>
+                                        <input type="text" id="entidade" class="pos" value="92527" disabled><br>
+                                        <h6 class="titpag">Referência</h6>
+                                        <input type="text" id="ref" class="pos" disabled> <br>
+                                        <h6 class="titpag">Valor</h6>
+                                        <input type="text" id="val" class="pos" disabled> <br><br>
+                                        <button onclick="AceitarPagamento()" 
+                                            class="btn corverdeebranco">Continuar</button>
+
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Booking End -->
+    </div>
+
+    <!-- Booking End -->
 
 
 
 
-        <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s" id="rodape">
-            <div class="container pb-5">
-                <div class="row g-5">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="bg-primary rounded p-4" id="btn-pitchfinder">
-                            <a href="index.html">
-                                <h1 class="text-white text-uppercase mb-3">PitchFinder</h1>
-                            </a>
-                        </div>
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s" id="rodape">
+        <div class="container pb-5">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-4">
+                    <div class="bg-primary rounded p-4" id="btn-pitchfinder">
+                        <a href="index.html">
+                            <h1 class="text-white text-uppercase mb-3">PitchFinder</h1>
+                        </a>
                     </div>
-                    <div class="col-md-6 col-lg-3">
-                        <h6 class="section-title text-start corverde text-uppercase mb-4">Contactos</h6>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Campus de Azurém, 4800-058 Guimarães,
-                            Portugal</p>
-                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+351 968 292 900</p>
-                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>pitchfinder@suporte.com</p>
-                        <div class="d-flex pt-2">
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                        </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h6 class="section-title text-start corverde text-uppercase mb-4">Contactos</h6>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Campus de Azurém, 4800-058 Guimarães,
+                        Portugal</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+351 968 292 900</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>pitchfinder@suporte.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
                     </div>
-                    <div class="col-lg-5 col-md-12">
-                        <div class="row gy-5 g-4">
-                            <div class="col-md-6">
-                                <h6 class="section-title text-start corverde text-uppercase mb-4">Company</h6>
-                                <a class="btn btn-link" href="index.html">Home</a>
-                                <a class="btn btn-link" href="about.html">Sobre Nós</a>
-                                <a class="btn btn-link" href="room.html">Campos</a>
-                                <a class="btn btn-link" href="">Privacy Policy</a>
-                                <a class="btn btn-link" href="">Termos & Condições</a>
-                            </div>
+                </div>
+                <div class="col-lg-5 col-md-12">
+                    <div class="row gy-5 g-4">
+                        <div class="col-md-6">
+                            <h6 class="section-title text-start corverde text-uppercase mb-4">Company</h6>
+                            <a class="btn btn-link" href="index.html">Home</a>
+                            <a class="btn btn-link" href="about.html">Sobre Nós</a>
+                            <a class="btn btn-link" href="room.html">Campos</a>
+                            <a class="btn btn-link" href="">Privacy Policy</a>
+                            <a class="btn btn-link" href="">Termos & Condições</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="copyright">
-                    <div class="row">
-                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="index.html">PitchFinder</a>, All Right Reserved.
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="index.html">PitchFinder</a>, All Right Reserved.
 
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
-                        </div>
-                        <div class="col-md-6 text-center text-md-end">
-                            <!--<div class="footer-menu">
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <!--<div class="footer-menu">
                             <a href="">Home</a>
                             <a href="">Cookies</a>
                             <a href="">Help</a>
                             <a href="">FQAs</a>
                         </div> -->
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Footer End -->
-
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
