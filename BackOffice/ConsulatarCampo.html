@@ -192,8 +192,14 @@
                     <!-- Content Row -->
                     <div class="row justify-content-start" id="labelsCampo">
                         <div class="col-md-auto" id="imagem">
-                            <div id="quadrado-inserir-imagem"></div>
-                            <input type="text" id="input-fundo" name="Nome" class="inputs" v-model="Nome">
+                            <input type="file" id="input-inserir-imagem" accept="image/*"
+                                onchange="previewImagem(event)">
+                            <div id="quadrado-inserir-imagem">
+                                <label id="labelImagem" for="input-inserir-imagem">Inserir imagem</label>
+                            </div>
+                            <input type="text" id="input-fundo" name="Nome" class="inputs" placeholder="Insira o nome"
+                                onfocus="this.placeholder = 'Insira o nome'"
+                                oninput="if (this.value !== '') this.placeholder = ''">
 
                         </div>
                         <div class="col-md-auto" >
