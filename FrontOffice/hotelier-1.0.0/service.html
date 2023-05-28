@@ -161,6 +161,22 @@
                                 <div class="col-md-4">
                                     <input type="date" id="data" class="reservardata" name='data_reserva'
                                         placeholder="Data" data-target="#date2" />
+                                        <script>
+                                            // Obter a referência do elemento input
+                                            const inputDate = document.getElementById('data');
+                                          
+                                            // Obter a data atual
+                                            const dataAtual = new Date();
+                                          
+                                            // Converter a data atual para o formato esperado pelo input
+                                            const ano = dataAtual.getFullYear();
+                                            const mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
+                                            const dia = String(dataAtual.getDate()).padStart(2, '0');
+                                            const dataMinima = `${ano}-${mes}-${dia}`;
+                                          
+                                            // Definir a data mínima no atributo 'min' do input
+                                            inputDate.min = dataMinima;
+                                          </script>
                                 </div>
                             </div>
                         </div>

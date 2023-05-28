@@ -5,7 +5,9 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 let a = [10, 25, 100, 60, 75, 105, 150, 165, 170, 160, 200, 250]
 const data = JSON.parse(localStorage.getItem('Pagamentos'));
+const lucroA = document.getElementById("lucroAno")
 a=calcularSomaMeses(data,getAnoAtual())
+lucroA.innerHTML=calcularSomaValoresPorAno(data,getAnoAtual()) + "€"
 
 function getAnoAtual() {
   const dataAtual = new Date();
@@ -13,9 +15,26 @@ function getAnoAtual() {
   return ano;
 }
 
+function calcularSomaValoresPorAno(dados, ano) {
+  let somaValores = 0;
+
+  dados.forEach(dado => {
+    let data = new Date(dado.Data);
+    let dadoAno = data.getFullYear();
+
+    if (dadoAno === ano) {
+      let valor = parseFloat(dado.Valor);
+      somaValores += valor;
+    }
+  });
+
+  return somaValores;
+}
+
 function anoSelecionado(){
   let selectAno = document.getElementById("ano");
   a=calcularSomaMeses2(data,Number(selectAno.value))
+  lucroA.innerHTML=calcularSomaValoresPorAno(data,Number(selectAno.value)) + "€"
   console.log(a)
   var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {

@@ -617,11 +617,26 @@ function AceitarPagamento(){
     window.location.href = "index.html"
 }
 
-function SaveDataToLocalStorageProfissionais(data) {
-    let a = [];
-    a = JSON.parse(localStorage.getItem("Profissionais")) || [];
-    a.push(data);
-    localStorage.setItem("Profissionais", JSON.stringify(a));
+
+  function verificarDataHoraAtual(data, hora) {
+    let dataHoraAtual = new Date();
+  
+    let partesData = data.split("-");
+    let ano = parseInt(partesData[0]);
+    let mes = parseInt(partesData[1]) - 1; // Meses em JavaScript são indexados a partir de 0
+    let dia = parseInt(partesData[2]);
+  
+    let partesHora = hora.split(":");
+    let horas = parseInt(partesHora[0]);
+    let minutos = parseInt(partesHora[1]);
+  
+    let dataHoraRecebida = new Date(ano, mes, dia, horas, minutos);
+  
+    if (dataHoraRecebida < dataHoraAtual) {
+      return false;
+    }
+  
+    return true;
   }
 
 function confirmar(x) {
@@ -642,6 +657,7 @@ function confirmar(x) {
         return;
     }
 
+
     if (x === "00:00") {
         horario.style.display = "none";
     } else {
@@ -651,12 +667,16 @@ function confirmar(x) {
 
     const nomeMes = obterNomeMes(data);
     const diaSemana = obterDiaDaSemana(data);
-
+    let texto = x + "-" + adicionarHora(x, 1);
+    if(!verificarDataHoraAtual(data1,texto)){
+        alert("A data selecionada é anterior a data atual");
+        return;
+    }
     document.getElementById('modal123').style.display = 'block';
     document.getElementById('overlay123').style.display = 'block';
-    let texto = diaSemana + ", " + data.getDate() + " de " + nomeMes + " de " + data.getFullYear();
+    texto = diaSemana + ", " + data.getDate() + " de " + nomeMes + " de " + data.getFullYear();
     paragrafo1.innerHTML = texto;
-    texto = x + "-" + adicionarHora(x, 1);
+    
     paragrafo2.innerHTML = texto;
     paragrafo3.style.fontWeight = "bold"
     texto = "Total a Pagar: " + campo.Preco + "€";
