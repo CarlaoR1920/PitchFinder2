@@ -721,15 +721,6 @@ function parceria(event) {
 
 function iniciarPag2() {
 
-    if (sessionStorage.getItem("UtilizadorLigado") === null) {
-        document.getElementById("perfil12").remove();
-        document.getElementById("BackOffice").remove();
-    } else {
-        document.getElementById("login12").remove();
-    }
-    if (JSON.parse(sessionStorage.getItem("UtilizadorLigado")).Tipo === "Cliente") {
-        document.getElementById("BackOffice").remove();
-    }
 
     // Obter a referência do elemento input
     const inputDate = document.getElementById('data');
@@ -748,6 +739,16 @@ function iniciarPag2() {
     inputDate.value = inputDate.min
 
     atualizarHorarios();
+
+    if (sessionStorage.getItem("UtilizadorLigado") === null) {
+        document.getElementById("perfil12").remove();
+        document.getElementById("BackOffice").remove();
+    } else {
+        document.getElementById("login12").remove();
+    }
+    if (JSON.parse(sessionStorage.getItem("UtilizadorLigado")).Tipo === "Cliente") {
+        document.getElementById("BackOffice").remove();
+    }
 }
 
 function atualizarHorarios() {
@@ -770,11 +771,9 @@ function atualizarHorarios() {
         if(campoEsc.Nome === Reservas[z].Campo && Reservas[z].data === inputDate.value){
             let partesHora = Reservas[z].horario.split(":");
             let horario = partesHora[0];
-            console.log(horario)
             
             for (let y = 0; y < butoes.length; y++) {
                 if (butoes[y].name === horario) {  
-                    console.log(butoes[y].name)
                     butoes[y].style.display = "none"
                     console.log(butoes[y].style.display)
                     if(Reservas[z].TempoHorario === "2"){
