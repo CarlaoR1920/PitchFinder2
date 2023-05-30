@@ -25,11 +25,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
-<body id="page-top" onload="perfil3()">
+<body id="page-top" onload="perfil4()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -59,7 +61,7 @@
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
+            <li class="nav-item  active">
                 <a class="nav-link" href="Reservas.html">
                     <i class="fas fa-calendar"></i>
                     <span>Reservas</span></a>
@@ -68,7 +70,7 @@
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="Campos.html">
-                    <i class="fa-regular  fa-futbol " ></i>
+                    <i class="fa-regular  fa-futbol "></i>
                     <span>Campos</span></a>
             </li>
 
@@ -187,7 +189,8 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Por Aprovar</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ReservasPendentes}}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ReservasPendentes}}
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa-solid fa-check fa-2x text-gray-300"></i>
@@ -201,63 +204,36 @@
 
 
                     <!-- Content Row -->
-                    <div class="row justify-content-start" id="muitacena">
-                        <div class="col-md-auto" id="imagem">
-                            <div id="quadrado-inserir-imagem_Reservas" :style="{
-                                'background-image': item2.Imagem,
-                                'background-size': 'cover',
-                                'background-position': 'center',
-                                'background-repeat': 'no-repeat',
-                            }">
-                            </div>
-                            <label class="labels1" id="labelNaturalidade">{{item2.Nome}}</label>
-
-
-                        </div>
+                    <div class="row justify-content-center" id="muitacena3">
                         <div class="col-md-auto">
-                            <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Localização: {{item2.Localizacao}}</label>
-                            </div>
-                            <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Balnearios: {{item2.Balnearios}}</label>
-                            </div>
-                            <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Outros: {{item2.Outros}}</label>
-                            </div>
-                            <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Cliente: {{item.Username}}</label>
-                            </div>
+                            <p style="color: #6d6d6f;"></p>Foram Utilizados Balnearios?</p>
+                            <select id="Balnearios" name="dados" disabled>
+                                <option id="Selecione uma opção">Selecione uma opção</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Nao">Não</option>
+                            </select>
+                            <p style="color: #6d6d6f;"></p>Foram Utilizados Bolas?</p>
+                            <select id="Bolas" name="dados" disabled>
+                                <option id="Selecione uma opção">Selecione uma opção</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Nao">Não</option>
+                            </select>
+                            <p style="color: #6d6d6f;"></p>Foram Utilizados Coletes?</p>
+                            <select id="Coletes" name="dados" disabled>
+                                <option id="Selecione uma opção">Selecione uma opção</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Nao">Não</option>
+                            </select>
+                            <p style="color: #6d6d6f;"></p>Quantas pessoas estiveram presentes?</p>
+                            <input id="Pessoas" name="dados" type="number" disabled>
                         </div>
+
                         <div class="col-md-auto" id="ReservalCol2">
-                            <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Data: {{item.data}}</label>
-                            </div>
-                            <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Horario: {{item.horario}}</label>
-                            </div>
-                            <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Custo:{{item.Valor}}</label>
-                            </div>
-                            <div class="row justify-content-start">
-                                <label class="labels1" id="labelNaturalidade">Profissional:</label>
-                                <select id="SelectPros" class="inputsPro" name="Profissional">
-                                    <option v-for="item in items" :value=item.NIF>{{item.Nome}}</option>
-                                </select>
-                            </div>
+                            <p style="color: #6d6d6f;"></p>Indique outros aspectos relevanes</p>
+                            <textarea id="Outros" name="dados" rows="12" cols="50" disabled>
+                                </textarea>
 
                         </div>
-                    </div>
-                    <div class="row justify-content-start" id="ConfReserva">
-                        <td>
-                            <button onclick="Marcar(1)" id="butaoAceitar2">Aceitar</button>
-                            <button onclick="Marcar(0)" id="butaoRecusar2">Recusar</button>
-                        </td>
-
-                    </div>
-                    <div class="row justify-content-center" id="ConfReserva">
-                            <button onclick="Relatorio()" class="btn btn-primary btn-lg" id="btnRelatorio">Preencher Relatorio</button>
-                            <button onclick="ConsultarRelatorio()" class="btn btn-primary btn-lg" id="btnRelatorio2">Consultar Relatorio</button>
-
 
                     </div>
                 </div>
