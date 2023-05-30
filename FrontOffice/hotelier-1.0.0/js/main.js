@@ -151,7 +151,7 @@ function RegistarUtilizador(event) {
 
 
 
-   // let data2 = {};
+    // let data2 = {};
     if (email.value == null || email.value == "") {
         alert('Por favor insira o seu email.');
         return;
@@ -464,17 +464,17 @@ function Guardar() {
             Utilizadores[itemIndex].Username = user.value
             Utilizadores[itemIndex].Email = email.value
             Utilizadores[itemIndex].Contacto = tel.value
-            
+
             userAtual.Nome = nome.value
             userAtual.Username = user.value
             userAtual.Email = email.value
             userAtual.Contacto = tel.value
 
-            if(!(foto === "" || foto === null)){
+            if (!(foto === "" || foto === null)) {
                 Utilizadores[itemIndex].Imagem = foto
                 userAtual.Imagem = foto
             }
-            
+
 
             localStorage.setItem('Utilizadores', JSON.stringify(Utilizadores));
             sessionStorage.setItem('UtilizadorLigado', JSON.stringify(userAtual));
@@ -511,54 +511,55 @@ function previewImagem(event) {
 
 function generateRandomNumber() {
     var randomNumber = Math.floor(Math.random() * 1000000000); // Gera um número aleatório de 0 a 999999999
-  
+
     var numberString = randomNumber.toString().padStart(9, '0');
-  
+
 
     var formattedNumber = numberString.replace(/(\d{3})(?=\d)/g, '$1 ');
-  
+
     return formattedNumber;
 }
 
-function confirmarPagamento(){
+function confirmarPagamento() {
     const Mbway = document.getElementById("mbway");
     const Multibanco = document.getElementById("mult");
     const termos = document.getElementById("termos");
-    if(!termos.checked){
+    if (!termos.checked) {
         alert("É necessario aceitar os Termos de Serviço")
         return
     }
-    
-   
-    
+
+
+
     if (Mbway.checked) {
         document.getElementById('modal123').style.display = 'none';
         document.getElementById('modal1234').style.display = 'block';
         const valorApagar = document.getElementById("DataModal4");
         const paragrafo3 = document.getElementById("DataModal3");
         valorApagar.innerHTML = paragrafo3.innerHTML
-    }else
-    if (Multibanco.checked) {
-        document.getElementById('modal123').style.display = 'none';
-        document.getElementById('modal12345').style.display = 'block';
-        const valorApagar = document.getElementById("val");
-        const paragrafo3 = document.getElementById("DataModal3");
-        const paragrafo1 = document.getElementById("ref");
-        paragrafo1.value = generateRandomNumber();
-        const partes = paragrafo3.innerHTML.split(':');
-        valorApagar.value = partes[1]
-    }else{
-        alert("Escolha um metodo de pagamento")
-    }
+    } else
+        if (Multibanco.checked) {
+            document.getElementById('modal123').style.display = 'none';
+            document.getElementById('modal12345').style.display = 'block';
+            const valorApagar = document.getElementById("val");
+            const paragrafo3 = document.getElementById("DataModal3");
+            const paragrafo1 = document.getElementById("ref");
+            paragrafo1.value = generateRandomNumber();
+            const partes = paragrafo3.innerHTML.split(':');
+            valorApagar.value = partes[1]
+        } else {
+            alert("Escolha um metodo de pagamento")
+        }
 
-    
+
 }
 
-function AceitarPagamento(){
+function AceitarPagamento() {
     let b = [];
     b = JSON.parse(localStorage.getItem("Reservas")) || [];
     let c = [];
     c = JSON.parse(localStorage.getItem("Pagamentos")) || [];
+    const horario = document.getElementById("tempo2");
     const paragrafo2 = document.getElementById("DataModal2");
     const Mbway = document.getElementById("mbway");
     const Multibanco = document.getElementById("mult");
@@ -567,7 +568,7 @@ function AceitarPagamento(){
     const campo = JSON.parse(sessionStorage.getItem("CampoEscolhido"));
     const user = JSON.parse(sessionStorage.getItem("UtilizadorLigado"));
     console.log(JSON.parse(localStorage.getItem("Reservas")))
-    if(user === ""){
+    if (user === "") {
         alert("Precisa de uma conta para confirmar o pagamento")
     }
     let data = {}
@@ -575,21 +576,20 @@ function AceitarPagamento(){
     let pagamento = ""
     let x = true;
     let a = 0;
-    while(x){
-        a=generateRandomNumber();
+    while (x) {
+        a = generateRandomNumber();
         var itemIndex = b.findIndex(item => item.IdReserva === a);
-        if(itemIndex === -1){
+        if (itemIndex === -1) {
             x = false;
         }
     }
 
     if (Mbway.checked) {
         pagamento = "MBWAY"
-    }else
-    if (Multibanco.checked) {
-        pagamento = "MULTIBANCO"
-    }
-    console.log(paragrafo2.value)
+    } else
+        if (Multibanco.checked) {
+            pagamento = "MULTIBANCO"
+        }
 
     data2["IdReserva"] = a;
     data2["data"] = data1;
@@ -600,6 +600,7 @@ function AceitarPagamento(){
     data2["Username"] = user.Username;
     data2["horario"] = paragrafo2.innerHTML;
     data2["Valor"] = valorApagar;
+    data2["TempoHorario"] = horario.value;
 
     data["Valor"] = valorApagar;
     data["NIF"] = user.NIF;
@@ -607,37 +608,37 @@ function AceitarPagamento(){
     data["Campo"] = campo.Nome;
     data["IdReserva"] = a;
     data["Data"] = data1;
-    
-    c.push(data) 
+
+    c.push(data)
     b.push(data2)
 
     localStorage.setItem("Pagamentos", JSON.stringify(c))
     localStorage.setItem("Reservas", JSON.stringify(b))
-    
+
     window.location.href = "index.html"
 }
 
 
-  function verificarDataHoraAtual(data, hora) {
+function verificarDataHoraAtual(data, hora) {
     let dataHoraAtual = new Date();
-  
+
     let partesData = data.split("-");
     let ano = parseInt(partesData[0]);
     let mes = parseInt(partesData[1]) - 1; // Meses em JavaScript são indexados a partir de 0
     let dia = parseInt(partesData[2]);
-  
+
     let partesHora = hora.split(":");
     let horas = parseInt(partesHora[0]);
     let minutos = parseInt(partesHora[1]);
-  
+
     let dataHoraRecebida = new Date(ano, mes, dia, horas, minutos);
-  
+
     if (dataHoraRecebida < dataHoraAtual) {
-      return false;
+        return false;
     }
-  
+
     return true;
-  }
+}
 
 function confirmar(x) {
     const data1 = document.getElementById("data").value;
@@ -668,7 +669,7 @@ function confirmar(x) {
     const nomeMes = obterNomeMes(data);
     const diaSemana = obterDiaDaSemana(data);
     let texto = x + "-" + adicionarHora(x, 1);
-    if(!verificarDataHoraAtual(data1,texto)){
+    if (!verificarDataHoraAtual(data1, texto)) {
         alert("A data selecionada é anterior a data atual");
         return;
     }
@@ -676,29 +677,28 @@ function confirmar(x) {
     document.getElementById('overlay123').style.display = 'block';
     texto = diaSemana + ", " + data.getDate() + " de " + nomeMes + " de " + data.getFullYear();
     paragrafo1.innerHTML = texto;
-    
+    texto = x + "-" + adicionarHora(x, 1);
     paragrafo2.innerHTML = texto;
     paragrafo3.style.fontWeight = "bold"
     texto = "Total a Pagar: " + campo.Preco + "€";
     paragrafo3.innerHTML = texto;
 }
 
-function parceria(event)
-{   
+function parceria(event) {
     event.preventDefault();
     const piso = document.querySelector("#piso");
     const bola = document.querySelector("#bola");
     const coletes = document.querySelector("#coletes");
-  
-    if(piso.value=="Selecione uma opção"){
+
+    if (piso.value == "Selecione uma opção") {
         alert("Preencha todos os campos associados. Selecione o piso do campo, por favor!")
         return
     }
-    if(bola.value=="Selecione uma opção"){
+    if (bola.value == "Selecione uma opção") {
         alert("Preencha todos os campos associados. Selecione a disponibilidade da bola, por favor!")
         return
     }
-    if(coletes.value=="Selecione uma opção"){
+    if (coletes.value == "Selecione uma opção") {
         alert("Preencha todos os campos associados. Selecione a disponibilidade dos coletes, por favor!")
         return
     }
@@ -707,19 +707,87 @@ function parceria(event)
     var data = {}
     const parcerias = JSON.parse(localStorage.getItem("Parcerias")) || []
 
-    for(let i=0; i<candidato.length;i++)
-    {
+    for (let i = 0; i < candidato.length; i++) {
         data[candidato[i].id] = candidato[i].value;
     }
-    
+
     parcerias.push(data);
-    localStorage.setItem("Parcerias",JSON.stringify(parcerias));
+    localStorage.setItem("Parcerias", JSON.stringify(parcerias));
     alert("Candidatura realizada com sucesso. Obrigado.")
     window.location.reload();
-    
-    
+
+
 }
+
+function iniciarPag2() {
+
+    if (sessionStorage.getItem("UtilizadorLigado") === null) {
+        document.getElementById("perfil12").remove();
+        document.getElementById("BackOffice").remove();
+    } else {
+        document.getElementById("login12").remove();
+    }
+    if (JSON.parse(sessionStorage.getItem("UtilizadorLigado")).Tipo === "Cliente") {
+        document.getElementById("BackOffice").remove();
+    }
+
+    // Obter a referência do elemento input
+    const inputDate = document.getElementById('data');
+    
+    // Obter a data atual
+    const dataAtual = new Date();
+    
+    // Converter a data atual para o formato esperado pelo input
+    const ano = dataAtual.getFullYear();
+    const mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
+    const dia = String(dataAtual.getDate()).padStart(2, '0');
+    const dataMinima = `${ano}-${mes}-${dia}`;
+
+    // Definir a data mínima no atributo 'min' do input
+    inputDate.min = dataMinima;
+    inputDate.value = inputDate.min
+
+    atualizarHorarios();
+}
+
+function atualizarHorarios() {
+    const inputDate = document.getElementById('data');
+    const dataAtual = new Date();
+    const butoes = document.getElementsByClassName("horas");
+    const hora = dataAtual.getHours()
+    const Reservas = JSON.parse(localStorage.getItem("Reservas"))
+    const campoEsc = JSON.parse(sessionStorage.getItem("CampoEscolhido"))
+
+    for (let i = 0; i < butoes.length; i++) {
+        if (butoes[i].name <= hora && inputDate.value === inputDate.min) {
+            butoes[i].style.display = "none"
+        } else {
+            butoes[i].style.display = "inline"
+        }
+    }
+
+    for(let z=0;z<Reservas.length;z++){
+        if(campoEsc.Nome === Reservas[z].Campo && Reservas[z].data === inputDate.value){
+            let partesHora = Reservas[z].horario.split(":");
+            let horario = partesHora[0];
+            console.log(horario)
+            
+            for (let y = 0; y < butoes.length; y++) {
+                if (butoes[y].name === horario) {  
+                    console.log(butoes[y].name)
+                    butoes[y].style.display = "none"
+                    console.log(butoes[y].style.display)
+                    if(Reservas[z].TempoHorario === "2"){
+                        butoes[y+1].style.display = "none"
+                    }
+                }
+            }
+        }
+    }
+
    
+}
+
 
 
 
